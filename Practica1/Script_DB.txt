@@ -1,0 +1,8 @@
+Create Database libreria
+create table autor (codAutor int identity primary key, nombre varchar);
+create table carnet (codCarnet int identity primary key, nombre varchar, dpi int, telefono int);
+create table libro (codLibro int identity primary key, nombre varchar, existencias int, paginas int, tema varchar, 
+codAutor int FOREIGN KEY REFERENCES autor(codAutor) );
+create table prestamo (codPrestamo int identity primary key,
+codCarnet int FOREIGN KEY REFERENCES carnet(codCarnet),
+codLibro int FOREIGN KEY REFERENCES libro(codLibro)); 
