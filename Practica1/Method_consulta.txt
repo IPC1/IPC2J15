@@ -1,0 +1,18 @@
+ [WebMethod]
+ public string Consulta2()
+ {
+     SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+     string sql = "select * from  autor";
+     SqlDataAdapter da  = new SqlDataAdapter(sql, sqlConn);
+     DataSet dts = new DataSet();
+
+     da.Fill(dts, "autor");
+     DataTable dt = new DataTable();
+     dt = dts.Tables["autor"];
+     string nombre = "";
+     foreach (DataRow dr in dt.Rows)
+{ nombre= nombre +" "+ dr["nombre"].ToString();
+
+}
+     return nombre;
+         } 
