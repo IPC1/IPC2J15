@@ -1,0 +1,131 @@
+
+Insertar Autor
+
+use libreria;
+set identity_insert autor offf;
+insert into autor (nombre)
+values ('Lopez');
+
+
+
+
+Insertar carnet
+
+use libreria;
+set identity_insert carnet offf;
+insert into carnet(nombre,dpi,telefono)
+values ('nombre', dpi,telefono);
+
+
+
+Insertar Libros:
+
+use libreria;
+set identity_insert libro off;
+declare @autor int;
+set @autor= (select codAutor from autor where nombre='Lopez')
+insert into libro (nombre, existencias, paginas, tema, codAutor, prestamos) 
+values ('El principito', 5,70, 'novela corta',@autor,0);
+
+
+
+Insertar prestamo
+
+use libreria;
+set indentity_insert prestamo off;
+declare @carnet int;
+declare @libro int;
+declare @prestamo int
+set @carnet= (select codCarnet from carnet where dpi=123456789);
+set @libro= (select codLibro from libro where nombre='El principito');
+set @prestamo=(select paginas from libro where codLibro= @libro);
+update libro set paginas=(@prestamo+100) where codLibro=@libro;
+insert into prestamo (codCarnet, codLibro)
+values (@carnet, @libro);
+
+
+
+Insertar reserva
+
+use libreria;
+set indentity_insert reserva off;
+declare @carnet int; declare @libro int;
+set @carnet= (select codCarnet from carnet where dpi=123456789)
+set @libro= (select codLibro from libro where nombre='El principito')
+insert into reserva (codCarnet, codLibro)
+values (@carnet, @libro);
+
+
+
+Eliminar prestamos
+
+use libreria
+declare @libro
+declare @carnet int;
+set @carnet= (select codCarnet from carnet where dpi=123456789)
+set @libro= (select codLibro from libro where nombre='El principito');
+delete from prestamo where codCarnet=1 and codLibro=@libro;
+
+
+
+Eliminar reserva
+
+use libreria
+declare @libro
+declare @carnet int;
+set @carnet= (select codCarnet from carnet where dpi=123456789)
+set @libro= (select codLibro from libro where nombre='El principito');
+delete from reserva where codCarnet=1 and codLibro=@libro;
+
+
+
+Cuantos prestamos tiene un carnet
+
+use libreria
+declare @carnet int;
+set @carnet= (select codCarnet from carnet where dpi=123456789)
+select count(codLibro) from prestamos where codCarnet=@carnet
+
+
+
+cuantos libros prestados hay
+
+use libreria
+declare @libro int;
+set @libro= (select codLibro from libro where nombre='El principito');
+select count(codCarnet) from prestamos where codlibro=@libro
+
+
+
+Cuantas reservas tiene un libro
+
+use libreria
+declare @libro int;
+set @libro= (select codLibro from libro where nombre='El principito');
+select count(codCarnet) from reservas where codLibro=@libro
+
+
+
+Comprobar la reserva de un carnet
+
+use libreria
+declare @libro
+declare @carnet int;
+set @carnet= (select codCarnet from carnet where dpi=123456789)
+set @libro= (select codLibro from libro where nombre='El principito');
+select count (codRserva) from reserva where codCarnet=1 and codLibro=@libro;
+
+
+
+Cuantas veces fue prestado
+
+use libreria
+select top 5 nombre as Nombre from libro order by prestamos
+
+
+
+
+devolver el numero de carnet
+
+use libreria
+select codCarnet from carnet where dpi=123456789;

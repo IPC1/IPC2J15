@@ -1,0 +1,258 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+
+[WebService(Namespace = "http://libreria")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+// [System.Web.Script.Services.ScriptService]
+
+public class Service : System.Web.Services.WebService
+{
+    public Service () {
+
+        //Uncomment the following line if using designed components 
+        //InitializeComponent(); 
+    }
+
+    [WebMethod]
+        public string HelloWorld()
+        {
+            return "Hello World";
+        }
+
+        private static string sqlConnectionString = "Data Source=PORTÁTIL;Initial Catalog=libreria;Integrated Security=True";
+ 
+         [WebMethod]
+ public void insertAutor(string nombre) //Insertar autor
+        {
+        SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+        string sql = "use libreria; set identity_insert autor off; insert into autor (nombre) values ('"+nombre+"');";
+        SqlDataAdapter da  = new SqlDataAdapter(sql, sqlConn);
+        DataSet dts = new DataSet();
+        da.Fill(dts, "autor");
+        
+        }
+
+         [WebMethod]
+         public string insertCarnet(string nombre, int dpi, int telefono) //Inserta nuevo usuario, devolviendo su numero de carnet
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria; set identity_insert carnet off; insert into carnet(nombre,dpi,telefono)"
+             +"values ('"+nombre+"', "+dpi+","+telefono+"); select codCarnet from carnet where dpi=" + dpi + ";";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+             da.Fill(dts, "carnet");
+
+             DataTable dt = new DataTable();
+             dt = dts.Tables["carnet"];
+             string palabra = "";
+             foreach (DataRow dr in dt.Rows)
+             {
+                 palabra = palabra + " " + dr["codCarnet"].ToString();
+             }
+             return palabra;
+         }
+
+         [WebMethod]
+         public void insertLibros(string nombre, int existencias, int paginas, string tema, string Autor)
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria; set identity_insert libro off;"
+             +"declare @autor int; set @autor= (select codAutor from autor where nombre='"+Autor+"')"
+             + "insert into libro (nombre, existencias, paginas, tema, codAutor, prestamos)"
+             +"values ('"+nombre+"', "+existencias+","+paginas+",'"+tema+"',@autor, 0); ";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+             da.Fill(dts, "libro");
+         }
+
+         [WebMethod]
+         public void insertPrestamo(string libro, int carnet) //presta un libro
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria; set identity_insert prestamo off;"
+             +"declare @libro int = (select codLibro from libro where nombre='"+libro+"');"
+             + " declare @prestamo int =(select prestamos from libro where codLibro= @libro);"
+             +"update libro set prestamos=(@prestamo+1) where codLibro=@libro;"
+             +"insert into prestamo (codCarnet, codLibro)"
+             +"values ("+carnet+", @libro);";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+             da.Fill(dts, "prestamo");
+         }
+
+
+         [WebMethod]
+         public void insertReserva(string libro, int carnet) //reserva un libro
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria; set identity_insert prestamo off;"
+             + "declare @libro int = (select codLibro from libro where nombre='" + libro + "');"
+             + "insert into reserva (codCarnet, codLibro)"
+             + " values (" + carnet + ", @libro);";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+             da.Fill(dts, "reserva");
+         }
+
+         [WebMethod]
+         public void deletePrestamo(string libro, int carnet) //devolucion de un libro
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria;"
+             +"declare @libro int =(select codLibro from libro where nombre='"+libro+"');"
+             +"delete from prestamo where codCarnet="+carnet+" and codLibro=@libro;";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+             da.Fill(dts, "prestamo");
+         }
+
+         [WebMethod]
+         public void deleteReserva(string libro, int carnet) //devolucion de un libro
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria;"
+             + "declare @libro int =(select codLibro from libro where nombre='" + libro + "');"
+             + "delete from reserva where codCarnet=" + carnet + " and codLibro=@libro;";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+             da.Fill(dts, "reserva");
+         }
+
+
+         [WebMethod]
+         public string getReservasLibro(string libro) //devuelve el numero de reservas que tiene un libro
+         {
+             SqlConnection conexion = new SqlConnection();
+             string sql = "use libreria;"
+             + "declare @libro int =(select codLibro from libro where nombre='" + libro + "');"
+             +"select count(codCarnet) from reserva where codLibro=@libro;";
+            //nuestro comando
+            SqlCommand comando = new SqlCommand();
+            //asignamos al objeto de conexión la cadena
+            conexion.ConnectionString = sqlConnectionString;
+            //indicamos al comando la conexión
+            comando.Connection = conexion;
+             //se abre la conexión
+            conexion.Open();
+            //asignamos al comando la consulta de COUNT
+            comando.CommandText = sql;
+            //guardamos el resultado en el TextBox txt_num_ventas
+             string palabra=(comando.ExecuteScalar()).ToString();
+            
+             return palabra;
+         }
+
+
+         [WebMethod]
+         public string getReservasCarnet(int carnet) //devuelve el numero de reservas que tiene un carnet
+         {
+             SqlConnection conexion = new SqlConnection();
+             string sql = "use libreria;"
+             + "select count(codLibro) from reserva where codCarnet='"+carnet+"'";
+             //nuestro comando
+             SqlCommand comando = new SqlCommand();
+             //asignamos al objeto de conexión la cadena
+             conexion.ConnectionString = sqlConnectionString;
+             //indicamos al comando la conexión
+             comando.Connection = conexion;
+             //se abre la conexión
+             conexion.Open();
+             //asignamos al comando la consulta de COUNT
+             comando.CommandText = sql;
+             //guardamos el resultado en el TextBox txt_num_ventas
+             string palabra = (comando.ExecuteScalar()).ToString();
+
+             return palabra;
+         }
+
+
+         [WebMethod]
+         public string comprobarReserva(int carnet, string libro) //Comprueba si existe la reserva
+         {
+             SqlConnection conexion = new SqlConnection();
+             string sql = "use libreria;"
+             + "declare @libro int =(select codLibro from libro where nombre='" + libro + "');"
+             + "select count(codLibro) from reserva where codCarnet='" + carnet + "' and codLibro=@libro;";
+             //nuestro comando
+             SqlCommand comando = new SqlCommand();
+             //asignamos al objeto de conexión la cadena
+             conexion.ConnectionString = sqlConnectionString;
+             //indicamos al comando la conexión
+             comando.Connection = conexion;
+             //se abre la conexión
+             conexion.Open();
+             //asignamos al comando la consulta de COUNT
+             comando.CommandText = sql;
+             //guardamos el resultado en el TextBox txt_num_ventas
+             string palabra = (comando.ExecuteScalar()).ToString();
+             return palabra;
+         }
+         [WebMethod]
+         public string getPrestamosLibro(string libro) //devuelve el numero de libros prestados
+         {
+             SqlConnection conexion = new SqlConnection();
+             string sql = "use libreria;"
+             + "declare @libro int =(select codLibro from libro where nombre='" + libro + "');"
+             + "select count(codCarnet) from prestamos where codLibro=@libro;";
+             //nuestro comando
+             SqlCommand comando = new SqlCommand();
+             //asignamos al objeto de conexión la cadena
+             conexion.ConnectionString = sqlConnectionString;
+             //indicamos al comando la conexión
+             comando.Connection = conexion;
+             //se abre la conexión
+             conexion.Open();
+             //asignamos al comando la consulta de COUNT
+             comando.CommandText = sql;
+             //guardamos el resultado en el TextBox txt_num_ventas
+             string palabra = (comando.ExecuteScalar()).ToString();
+
+             return palabra;
+         }
+
+         [WebMethod]
+         public string getPrestamosCarnet(int carnet) //devuelve la cantidad de prestamos que tiene un carnet
+         {
+             SqlConnection conexion = new SqlConnection();
+             string sql = "use libreria;"
+             + "select count(codLibro) from prestamo where codCarnet=" + carnet + ";";
+             //nuestro comando
+             SqlCommand comando = new SqlCommand();
+             //asignamos al objeto de conexión la cadena
+             conexion.ConnectionString = sqlConnectionString;
+             //indicamos al comando la conexión
+             comando.Connection = conexion;
+             //se abre la conexión
+             conexion.Open();
+             //asignamos al comando la consulta de COUNT
+             comando.CommandText = sql;
+             //guardamos el resultado en el TextBox txt_num_ventas
+             string palabra = (comando.ExecuteScalar()).ToString();
+
+             return palabra;
+         }
+        [WebMethod]
+         public string TopFive()//devuelve los libros más prestados
+         {
+             SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+             string sql = "use libreria; select top 5 nombre from libro order by prestamos";
+             SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+             DataSet dts = new DataSet();
+
+             da.Fill(dts, "libro");
+             DataTable dt = new DataTable();
+             dt = dts.Tables["libro"];
+             string palabra = "";
+             foreach (DataRow dr in dt.Rows)
+             {
+                 palabra = palabra + "," + dr["nombre"].ToString();
+             }
+             return palabra;
+         }
+    }

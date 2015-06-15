@@ -16,3 +16,30 @@
 }
      return nombre;
          } 
+
+
+
+
+
+
+[WebMethod]
+         public string getPrestamosCarnet(int carnet) //devuelve la cantidad de prestamos que tiene un carnet
+         {
+             SqlConnection conexion = new SqlConnection();
+             string sql = "use libreria;"
+             + "select count(codLibro) from prestamo where codCarnet=" + carnet + ";";
+             //nuestro comando
+             SqlCommand comando = new SqlCommand();
+             //asignamos al objeto de conexión la cadena
+             conexion.ConnectionString = sqlConnectionString;
+             //indicamos al comando la conexión
+             comando.Connection = conexion;
+             //se abre la conexión
+             conexion.Open();
+             //asignamos al comando la consulta de COUNT
+             comando.CommandText = sql;
+             //guardamos el resultado en el TextBox txt_num_ventas
+             string palabra = (comando.ExecuteScalar()).ToString();
+
+             return palabra;
+         }
