@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Index.master.cs" Inherits="ServiceWe_June.Index" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Neutral Charisma | Designed by nodethirtythree + Templated.org</title>
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	    </head>
+	<body>
+		<form id="form1" runat="server">
+		<div id="bg">
+			<div id="outer">
+				<div id="header">
+					<div id="logo">
+						<h1>
+							<a href="#">BIBLIOTECA</a>
+						</h1>
+					</div>
+					<div id="nav">
+						<ul>
+							<li class="first active">
+								<a href ="Devoluciones.aspx"> Devoluciones &nbsp;</a></li>
+							<li>
+								<a href ="CATALOGO.aspx"> Prestamos &nbsp;</a></li>
+							<li>
+								<a href ="REPORTES.aspx"> Consultas &nbsp;</a></li>
+						
+                            <li>
+								<a href ="LOGOUT.aspx"> Admin &nbsp;</a></li>
+							
+						</ul>
+						<br class="clear" />
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	        <p>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+            </p>
+            
+	    </form>
+	</body>
+</html>

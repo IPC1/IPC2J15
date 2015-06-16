@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Neutral Charisma | Designed by nodethirtythree + Templated.org</title>
+		<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet" type="text/css" />
+		<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	    <style type="text/css">
+            .auto-style1 {
+                height: 196px;
+            }
+            .auto-style2 {
+                height: 177px;
+            }
+        </style>
+	</head>
+	<body>
+		<form id="form1" runat="server">
+		<div id="bg">
+			<div id="outer">
+				<div id="header">
+					<div id="logo">
+						<h1>
+							<a href="#">tamako market</a>
+						</h1>
+					</div>
+					<div id="nav">
+						<ul>
+							<li class="first active">
+								<a href ="INDEX.aspx"> Home &nbsp;</a></li>
+							<li>
+								<a href ="CATALOGO.aspx"> catálogo &nbsp;</a></li>
+							<li>
+								<a href ="REPORTES.aspx"> Reportes &nbsp;</a></li>
+						
+                            <li>
+								<a href ="LOGOUT.aspx"> Log Out &nbsp;</a></li>
+							
+						</ul>
+						<br class="clear" />
+					</div>
+				</div>
+				<div id="main">
+					<div id="content">
+						<br class="clear" />
+					    <table style="width:100%;">
+                            <tr>
+                                <td class="auto-style2">
+							<ul class="imageList">
+								<li>
+									<img class="left" src="images/pic1.jpg" width="80" height="80" alt="" />Encuentra lo más nuevo de la temporada</li>
+							</ul>
+						        </td>
+                                <td class="auto-style2"></td>
+                                <td class="auto-style2">Articulos para el hogar, ferretería y más!</td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1">Juguetes, alimentos y hasta vestuario a la moda...</td>
+                                <td></td>
+                                <td>
+							<ul class="imageList">
+								<li>
+									<img class="left" src="images/pic1.jpg" width="80" height="80" alt="" />¡Donde encuentras de todo y para todos!</li>
+							</ul>
+						        </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1">&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+					</div>
+					<br class="clear" />
+				</div>
+			</div>
+			<div id="copyright">
+				&copy; Your Site Name | Design: <a href="http://templated.org/free-css-templates/neutralcharisma/">Neutral Charisma</a> by <a href="http://nodethirtythree.com">nodethirtythree</a> + <a href="http://templated.org/">Templated.org</a>
+			</div>
+		</div>
+	    </form>
+	</body>
+</html>

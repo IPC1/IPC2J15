@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertAutor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertAutorResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertCarnet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCarnetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCarnetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertLibros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="existencias" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="paginas" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="tema" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Autor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertLibrosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertPrestamo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertPrestamoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertReserva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertReservaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="deletePrestamo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrestamoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="deleteReserva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteReservaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getReservasLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReservasLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getReservasLibroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReservasCarnet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReservasCarnetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getReservasCarnetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="comprobarReserva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="comprobarReservaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="comprobarReservaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrestamosLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrestamosLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrestamosLibroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrestamosCarnet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="carnet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrestamosCarnetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrestamosCarnetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopFive">
+        <s:complexType />
+      </s:element>
+      <s:element name="TopFiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopFiveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertAutorSoapIn">
+    <wsdl:part name="parameters" element="tns:insertAutor" />
+  </wsdl:message>
+  <wsdl:message name="insertAutorSoapOut">
+    <wsdl:part name="parameters" element="tns:insertAutorResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCarnetSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCarnet" />
+  </wsdl:message>
+  <wsdl:message name="insertCarnetSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCarnetResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertLibrosSoapIn">
+    <wsdl:part name="parameters" element="tns:insertLibros" />
+  </wsdl:message>
+  <wsdl:message name="insertLibrosSoapOut">
+    <wsdl:part name="parameters" element="tns:insertLibrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertPrestamoSoapIn">
+    <wsdl:part name="parameters" element="tns:insertPrestamo" />
+  </wsdl:message>
+  <wsdl:message name="insertPrestamoSoapOut">
+    <wsdl:part name="parameters" element="tns:insertPrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertReservaSoapIn">
+    <wsdl:part name="parameters" element="tns:insertReserva" />
+  </wsdl:message>
+  <wsdl:message name="insertReservaSoapOut">
+    <wsdl:part name="parameters" element="tns:insertReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePrestamoSoapIn">
+    <wsdl:part name="parameters" element="tns:deletePrestamo" />
+  </wsdl:message>
+  <wsdl:message name="deletePrestamoSoapOut">
+    <wsdl:part name="parameters" element="tns:deletePrestamoResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteReservaSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteReserva" />
+  </wsdl:message>
+  <wsdl:message name="deleteReservaSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReservasLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:getReservasLibro" />
+  </wsdl:message>
+  <wsdl:message name="getReservasLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:getReservasLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReservasCarnetSoapIn">
+    <wsdl:part name="parameters" element="tns:getReservasCarnet" />
+  </wsdl:message>
+  <wsdl:message name="getReservasCarnetSoapOut">
+    <wsdl:part name="parameters" element="tns:getReservasCarnetResponse" />
+  </wsdl:message>
+  <wsdl:message name="comprobarReservaSoapIn">
+    <wsdl:part name="parameters" element="tns:comprobarReserva" />
+  </wsdl:message>
+  <wsdl:message name="comprobarReservaSoapOut">
+    <wsdl:part name="parameters" element="tns:comprobarReservaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrestamosLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrestamosLibro" />
+  </wsdl:message>
+  <wsdl:message name="getPrestamosLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrestamosLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrestamosCarnetSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrestamosCarnet" />
+  </wsdl:message>
+  <wsdl:message name="getPrestamosCarnetSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrestamosCarnetResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopFiveSoapIn">
+    <wsdl:part name="parameters" element="tns:TopFive" />
+  </wsdl:message>
+  <wsdl:message name="TopFiveSoapOut">
+    <wsdl:part name="parameters" element="tns:TopFiveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertAutor">
+      <wsdl:input message="tns:insertAutorSoapIn" />
+      <wsdl:output message="tns:insertAutorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCarnet">
+      <wsdl:input message="tns:insertCarnetSoapIn" />
+      <wsdl:output message="tns:insertCarnetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertLibros">
+      <wsdl:input message="tns:insertLibrosSoapIn" />
+      <wsdl:output message="tns:insertLibrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertPrestamo">
+      <wsdl:input message="tns:insertPrestamoSoapIn" />
+      <wsdl:output message="tns:insertPrestamoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertReserva">
+      <wsdl:input message="tns:insertReservaSoapIn" />
+      <wsdl:output message="tns:insertReservaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePrestamo">
+      <wsdl:input message="tns:deletePrestamoSoapIn" />
+      <wsdl:output message="tns:deletePrestamoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteReserva">
+      <wsdl:input message="tns:deleteReservaSoapIn" />
+      <wsdl:output message="tns:deleteReservaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservasLibro">
+      <wsdl:input message="tns:getReservasLibroSoapIn" />
+      <wsdl:output message="tns:getReservasLibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservasCarnet">
+      <wsdl:input message="tns:getReservasCarnetSoapIn" />
+      <wsdl:output message="tns:getReservasCarnetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="comprobarReserva">
+      <wsdl:input message="tns:comprobarReservaSoapIn" />
+      <wsdl:output message="tns:comprobarReservaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPrestamosLibro">
+      <wsdl:input message="tns:getPrestamosLibroSoapIn" />
+      <wsdl:output message="tns:getPrestamosLibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPrestamosCarnet">
+      <wsdl:input message="tns:getPrestamosCarnetSoapIn" />
+      <wsdl:output message="tns:getPrestamosCarnetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TopFive">
+      <wsdl:input message="tns:TopFiveSoapIn" />
+      <wsdl:output message="tns:TopFiveSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertAutor">
+      <soap:operation soapAction="http://tempuri.org/insertAutor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCarnet">
+      <soap:operation soapAction="http://tempuri.org/insertCarnet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertLibros">
+      <soap:operation soapAction="http://tempuri.org/insertLibros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertPrestamo">
+      <soap:operation soapAction="http://tempuri.org/insertPrestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertReserva">
+      <soap:operation soapAction="http://tempuri.org/insertReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrestamo">
+      <soap:operation soapAction="http://tempuri.org/deletePrestamo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReserva">
+      <soap:operation soapAction="http://tempuri.org/deleteReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservasLibro">
+      <soap:operation soapAction="http://tempuri.org/getReservasLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservasCarnet">
+      <soap:operation soapAction="http://tempuri.org/getReservasCarnet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="comprobarReserva">
+      <soap:operation soapAction="http://tempuri.org/comprobarReserva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrestamosLibro">
+      <soap:operation soapAction="http://tempuri.org/getPrestamosLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrestamosCarnet">
+      <soap:operation soapAction="http://tempuri.org/getPrestamosCarnet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopFive">
+      <soap:operation soapAction="http://tempuri.org/TopFive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertAutor">
+      <soap12:operation soapAction="http://tempuri.org/insertAutor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCarnet">
+      <soap12:operation soapAction="http://tempuri.org/insertCarnet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertLibros">
+      <soap12:operation soapAction="http://tempuri.org/insertLibros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertPrestamo">
+      <soap12:operation soapAction="http://tempuri.org/insertPrestamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertReserva">
+      <soap12:operation soapAction="http://tempuri.org/insertReserva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrestamo">
+      <soap12:operation soapAction="http://tempuri.org/deletePrestamo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReserva">
+      <soap12:operation soapAction="http://tempuri.org/deleteReserva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservasLibro">
+      <soap12:operation soapAction="http://tempuri.org/getReservasLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservasCarnet">
+      <soap12:operation soapAction="http://tempuri.org/getReservasCarnet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="comprobarReserva">
+      <soap12:operation soapAction="http://tempuri.org/comprobarReserva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrestamosLibro">
+      <soap12:operation soapAction="http://tempuri.org/getPrestamosLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrestamosCarnet">
+      <soap12:operation soapAction="http://tempuri.org/getPrestamosCarnet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopFive">
+      <soap12:operation soapAction="http://tempuri.org/TopFive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:49701/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:49701/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
