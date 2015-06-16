@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-
-using System.Data.SqlClient;
-using System.Data;
 
 namespace ServiceWe_June
 {
     /// <summary>
     /// Summary description for WebService1
     /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
+    [WebService(Namespace = "http://libreria.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
     public class WebService1 : System.Web.Services.WebService
     {
+
 
         [WebMethod]
         public string HelloWorld()
@@ -127,7 +127,7 @@ namespace ServiceWe_June
 
 
         [WebMethod]
-        public string getReservasLibro(string libro) //devuelve el numero de reservas que tiene un libro
+        public int getReservasLibro(string libro) //devuelve el numero de reservas que tiene un libro
         {
             SqlConnection conexion = new SqlConnection();
             string sql = "use libreria;"
@@ -144,14 +144,14 @@ namespace ServiceWe_June
             //asignamos al comando la consulta de COUNT
             comando.CommandText = sql;
             //guardamos el resultado en el TextBox txt_num_ventas
-            string palabra = (comando.ExecuteScalar()).ToString();
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
 
             return palabra;
         }
 
 
         [WebMethod]
-        public string getReservasCarnet(int carnet) //devuelve el numero de reservas que tiene un carnet
+        public int getReservasCarnet(int carnet) //devuelve el numero de reservas que tiene un carnet
         {
             SqlConnection conexion = new SqlConnection();
             string sql = "use libreria;"
@@ -167,14 +167,14 @@ namespace ServiceWe_June
             //asignamos al comando la consulta de COUNT
             comando.CommandText = sql;
             //guardamos el resultado en el TextBox txt_num_ventas
-            string palabra = (comando.ExecuteScalar()).ToString();
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
 
             return palabra;
         }
 
 
         [WebMethod]
-        public string comprobarReserva(int carnet, string libro) //Comprueba si existe la reserva
+        public int comprobarReserva(int carnet, string libro) //Comprueba si existe la reserva devolviendo 1 si es asi.
         {
             SqlConnection conexion = new SqlConnection();
             string sql = "use libreria;"
@@ -191,11 +191,32 @@ namespace ServiceWe_June
             //asignamos al comando la consulta de COUNT
             comando.CommandText = sql;
             //guardamos el resultado en el TextBox txt_num_ventas
-            string palabra = (comando.ExecuteScalar()).ToString();
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
             return palabra;
         }
         [WebMethod]
-        public string getPrestamosLibro(string libro) //devuelve el numero de libros prestados
+        public int comprobarPrestamo(int carnet, string libro) //Comprueba si existe el prestamo devolviendo 1 si es asi.
+        {
+            SqlConnection conexion = new SqlConnection();
+            string sql = "use libreria;"
+            + "declare @libro int =(select codLibro from libro where nombre='" + libro + "');"
+            + "select count(codLibro) from prestamo where codCarnet='" + carnet + "' and codLibro=@libro;";
+            //nuestro comando
+            SqlCommand comando = new SqlCommand();
+            //asignamos al objeto de conexión la cadena
+            conexion.ConnectionString = sqlConnectionString;
+            //indicamos al comando la conexión
+            comando.Connection = conexion;
+            //se abre la conexión
+            conexion.Open();
+            //asignamos al comando la consulta de COUNT
+            comando.CommandText = sql;
+            //guardamos el resultado en el TextBox txt_num_ventas
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
+            return palabra;
+        }
+        [WebMethod]
+        public int getPrestamosLibro(string libro) //devuelve el numero de libros prestados
         {
             SqlConnection conexion = new SqlConnection();
             string sql = "use libreria;"
@@ -212,13 +233,13 @@ namespace ServiceWe_June
             //asignamos al comando la consulta de COUNT
             comando.CommandText = sql;
             //guardamos el resultado en el TextBox txt_num_ventas
-            string palabra = (comando.ExecuteScalar()).ToString();
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
 
             return palabra;
         }
 
         [WebMethod]
-        public string getPrestamosCarnet(int carnet) //devuelve la cantidad de prestamos que tiene un carnet
+        public int getPrestamosCarnet(int carnet) //devuelve la cantidad de prestamos que tiene un carnet
         {
             SqlConnection conexion = new SqlConnection();
             string sql = "use libreria;"
@@ -234,7 +255,50 @@ namespace ServiceWe_June
             //asignamos al comando la consulta de COUNT
             comando.CommandText = sql;
             //guardamos el resultado en el TextBox txt_num_ventas
-            string palabra = (comando.ExecuteScalar()).ToString();
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
+
+            return palabra;
+        }
+        [WebMethod]
+        public int getTomosLibros(string libro) //devuelve el numero de existencias que tiene un libro
+        {
+            SqlConnection conexion = new SqlConnection();
+            string sql = "use libreria;"
+            + "declare @libro int =(select codLibro from libro where nombre='" + libro + "');"
+            + "select existencias from libro where codLibro=@libro;";
+            //nuestro comando
+            SqlCommand comando = new SqlCommand();
+            //asignamos al objeto de conexión la cadena
+            conexion.ConnectionString = sqlConnectionString;
+            //indicamos al comando la conexión
+            comando.Connection = conexion;
+            //se abre la conexión
+            conexion.Open();
+            //asignamos al comando la consulta de COUNT
+            comando.CommandText = sql;
+            //guardamos el resultado en el TextBox txt_num_ventas
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
+
+            return palabra;
+        }
+        [WebMethod]
+        public int getAutor(string Autor) //devuelve el codigo del autor, si existe.
+        {
+            SqlConnection conexion = new SqlConnection();
+            string sql = "use libreria;"
+            + "select codAutor from Autor where  nombre='" + Autor + "'";
+            //nuestro comando
+            SqlCommand comando = new SqlCommand();
+            //asignamos al objeto de conexión la cadena
+            conexion.ConnectionString = sqlConnectionString;
+            //indicamos al comando la conexión
+            comando.Connection = conexion;
+            //se abre la conexión
+            conexion.Open();
+            //asignamos al comando la consulta de COUNT
+            comando.CommandText = sql;
+            //guardamos el resultado en el TextBox txt_num_ventas
+            int palabra = Convert.ToInt32(comando.ExecuteScalar());
 
             return palabra;
         }

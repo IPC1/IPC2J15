@@ -27,12 +27,12 @@
 							<li class="first active">
 								<a href ="Devoluciones.aspx"> Devoluciones &nbsp;</a></li>
 							<li>
-								<a href ="CATALOGO.aspx"> Prestamos &nbsp;</a></li>
+								<a href ="Prestamos.aspx"> Prestamos &nbsp;</a></li>
 							<li>
-								<a href ="REPORTES.aspx"> Consultas &nbsp;</a></li>
+								<a href ="Consultas.aspx"> Consultas &nbsp;</a></li>
 						
                             <li>
-								<a href ="LOGOUT.aspx"> Admin &nbsp;</a></li>
+								<a href ="Admin.aspx"> Admin &nbsp;</a></li>
 							
 						</ul>
 						<br class="clear" />

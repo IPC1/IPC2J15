@@ -20,6 +20,8 @@ namespace ServiceWe_June
         {
             ServiceReference1.WebService1SoapClient servicio = new ServiceReference1.WebService1SoapClient();
             servicio.deletePrestamo(devolverLibro.Text, Convert.ToInt32(devolverCarnet.Text));
+            devolverCarnet.Text = "";
+            devolverLibro.Text = "";
         }
     }
 }

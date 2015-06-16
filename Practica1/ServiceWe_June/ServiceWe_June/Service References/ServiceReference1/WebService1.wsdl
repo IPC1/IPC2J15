@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://libreria.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://libreria.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+    <s:schema elementFormDefault="qualified" targetNamespace="http://libreria.org/">
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -106,7 +106,7 @@
       <s:element name="getReservasLibroResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getReservasLibroResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="getReservasLibroResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -120,7 +120,7 @@
       <s:element name="getReservasCarnetResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getReservasCarnetResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="getReservasCarnetResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -135,7 +135,7 @@
       <s:element name="comprobarReservaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="comprobarReservaResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="comprobarReservaResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -149,7 +149,7 @@
       <s:element name="getPrestamosLibroResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getPrestamosLibroResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="getPrestamosLibroResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -163,7 +163,21 @@
       <s:element name="getPrestamosCarnetResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getPrestamosCarnetResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="getPrestamosCarnetResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTomosLibros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="libro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTomosLibrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getTomosLibrosResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -257,6 +271,12 @@
   <wsdl:message name="getPrestamosCarnetSoapOut">
     <wsdl:part name="parameters" element="tns:getPrestamosCarnetResponse" />
   </wsdl:message>
+  <wsdl:message name="getTomosLibrosSoapIn">
+    <wsdl:part name="parameters" element="tns:getTomosLibros" />
+  </wsdl:message>
+  <wsdl:message name="getTomosLibrosSoapOut">
+    <wsdl:part name="parameters" element="tns:getTomosLibrosResponse" />
+  </wsdl:message>
   <wsdl:message name="TopFiveSoapIn">
     <wsdl:part name="parameters" element="tns:TopFive" />
   </wsdl:message>
@@ -316,6 +336,10 @@
       <wsdl:input message="tns:getPrestamosCarnetSoapIn" />
       <wsdl:output message="tns:getPrestamosCarnetSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getTomosLibros">
+      <wsdl:input message="tns:getTomosLibrosSoapIn" />
+      <wsdl:output message="tns:getTomosLibrosSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="TopFive">
       <wsdl:input message="tns:TopFiveSoapIn" />
       <wsdl:output message="tns:TopFiveSoapOut" />
@@ -324,7 +348,7 @@
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <soap:operation soapAction="http://libreria.org/HelloWorld" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -333,7 +357,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertAutor">
-      <soap:operation soapAction="http://tempuri.org/insertAutor" style="document" />
+      <soap:operation soapAction="http://libreria.org/insertAutor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -342,7 +366,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertCarnet">
-      <soap:operation soapAction="http://tempuri.org/insertCarnet" style="document" />
+      <soap:operation soapAction="http://libreria.org/insertCarnet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -351,7 +375,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertLibros">
-      <soap:operation soapAction="http://tempuri.org/insertLibros" style="document" />
+      <soap:operation soapAction="http://libreria.org/insertLibros" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -360,7 +384,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertPrestamo">
-      <soap:operation soapAction="http://tempuri.org/insertPrestamo" style="document" />
+      <soap:operation soapAction="http://libreria.org/insertPrestamo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -369,7 +393,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertReserva">
-      <soap:operation soapAction="http://tempuri.org/insertReserva" style="document" />
+      <soap:operation soapAction="http://libreria.org/insertReserva" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -378,7 +402,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deletePrestamo">
-      <soap:operation soapAction="http://tempuri.org/deletePrestamo" style="document" />
+      <soap:operation soapAction="http://libreria.org/deletePrestamo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -387,7 +411,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deleteReserva">
-      <soap:operation soapAction="http://tempuri.org/deleteReserva" style="document" />
+      <soap:operation soapAction="http://libreria.org/deleteReserva" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -396,7 +420,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getReservasLibro">
-      <soap:operation soapAction="http://tempuri.org/getReservasLibro" style="document" />
+      <soap:operation soapAction="http://libreria.org/getReservasLibro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -405,7 +429,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getReservasCarnet">
-      <soap:operation soapAction="http://tempuri.org/getReservasCarnet" style="document" />
+      <soap:operation soapAction="http://libreria.org/getReservasCarnet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -414,7 +438,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="comprobarReserva">
-      <soap:operation soapAction="http://tempuri.org/comprobarReserva" style="document" />
+      <soap:operation soapAction="http://libreria.org/comprobarReserva" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -423,7 +447,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getPrestamosLibro">
-      <soap:operation soapAction="http://tempuri.org/getPrestamosLibro" style="document" />
+      <soap:operation soapAction="http://libreria.org/getPrestamosLibro" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -432,7 +456,16 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getPrestamosCarnet">
-      <soap:operation soapAction="http://tempuri.org/getPrestamosCarnet" style="document" />
+      <soap:operation soapAction="http://libreria.org/getPrestamosCarnet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTomosLibros">
+      <soap:operation soapAction="http://libreria.org/getTomosLibros" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -441,7 +474,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="TopFive">
-      <soap:operation soapAction="http://tempuri.org/TopFive" style="document" />
+      <soap:operation soapAction="http://libreria.org/TopFive" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -453,7 +486,7 @@
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <soap12:operation soapAction="http://libreria.org/HelloWorld" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -462,7 +495,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertAutor">
-      <soap12:operation soapAction="http://tempuri.org/insertAutor" style="document" />
+      <soap12:operation soapAction="http://libreria.org/insertAutor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -471,7 +504,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertCarnet">
-      <soap12:operation soapAction="http://tempuri.org/insertCarnet" style="document" />
+      <soap12:operation soapAction="http://libreria.org/insertCarnet" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -480,7 +513,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertLibros">
-      <soap12:operation soapAction="http://tempuri.org/insertLibros" style="document" />
+      <soap12:operation soapAction="http://libreria.org/insertLibros" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -489,7 +522,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertPrestamo">
-      <soap12:operation soapAction="http://tempuri.org/insertPrestamo" style="document" />
+      <soap12:operation soapAction="http://libreria.org/insertPrestamo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -498,7 +531,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="insertReserva">
-      <soap12:operation soapAction="http://tempuri.org/insertReserva" style="document" />
+      <soap12:operation soapAction="http://libreria.org/insertReserva" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -507,7 +540,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deletePrestamo">
-      <soap12:operation soapAction="http://tempuri.org/deletePrestamo" style="document" />
+      <soap12:operation soapAction="http://libreria.org/deletePrestamo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -516,7 +549,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deleteReserva">
-      <soap12:operation soapAction="http://tempuri.org/deleteReserva" style="document" />
+      <soap12:operation soapAction="http://libreria.org/deleteReserva" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -525,7 +558,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getReservasLibro">
-      <soap12:operation soapAction="http://tempuri.org/getReservasLibro" style="document" />
+      <soap12:operation soapAction="http://libreria.org/getReservasLibro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -534,7 +567,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getReservasCarnet">
-      <soap12:operation soapAction="http://tempuri.org/getReservasCarnet" style="document" />
+      <soap12:operation soapAction="http://libreria.org/getReservasCarnet" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -543,7 +576,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="comprobarReserva">
-      <soap12:operation soapAction="http://tempuri.org/comprobarReserva" style="document" />
+      <soap12:operation soapAction="http://libreria.org/comprobarReserva" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -552,7 +585,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getPrestamosLibro">
-      <soap12:operation soapAction="http://tempuri.org/getPrestamosLibro" style="document" />
+      <soap12:operation soapAction="http://libreria.org/getPrestamosLibro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -561,7 +594,16 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getPrestamosCarnet">
-      <soap12:operation soapAction="http://tempuri.org/getPrestamosCarnet" style="document" />
+      <soap12:operation soapAction="http://libreria.org/getPrestamosCarnet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTomosLibros">
+      <soap12:operation soapAction="http://libreria.org/getTomosLibros" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -570,7 +612,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="TopFive">
-      <soap12:operation soapAction="http://tempuri.org/TopFive" style="document" />
+      <soap12:operation soapAction="http://libreria.org/TopFive" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -12,63 +12,65 @@ namespace ServiceWe_June.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.WebService1Soap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://libreria.org/", ConfigurationName="ServiceReference1.WebService1Soap")]
     public interface WebService1Soap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/HelloWorld", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.HelloWorldResponse HelloWorld(ServiceWe_June.ServiceReference1.HelloWorldRequest request);
         
-        // CODEGEN: Generating message contract since element name nombre from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertAutor", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name nombre from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/insertAutor", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.insertAutorResponse insertAutor(ServiceWe_June.ServiceReference1.insertAutorRequest request);
         
-        // CODEGEN: Generating message contract since element name nombre from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertCarnet", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name nombre from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/insertCarnet", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.insertCarnetResponse insertCarnet(ServiceWe_June.ServiceReference1.insertCarnetRequest request);
         
-        // CODEGEN: Generating message contract since element name nombre from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertLibros", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name nombre from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/insertLibros", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.insertLibrosResponse insertLibros(ServiceWe_June.ServiceReference1.insertLibrosRequest request);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertPrestamo", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/insertPrestamo", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.insertPrestamoResponse insertPrestamo(ServiceWe_June.ServiceReference1.insertPrestamoRequest request);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertReserva", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/insertReserva", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.insertReservaResponse insertReserva(ServiceWe_June.ServiceReference1.insertReservaRequest request);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/deletePrestamo", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/deletePrestamo", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.deletePrestamoResponse deletePrestamo(ServiceWe_June.ServiceReference1.deletePrestamoRequest request);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/deleteReserva", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/deleteReserva", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.deleteReservaResponse deleteReserva(ServiceWe_June.ServiceReference1.deleteReservaRequest request);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getReservasLibro", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/getReservasLibro", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.getReservasLibroResponse getReservasLibro(ServiceWe_June.ServiceReference1.getReservasLibroRequest request);
         
-        // CODEGEN: Generating message contract since element name getReservasCarnetResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getReservasCarnet", ReplyAction="*")]
-        ServiceWe_June.ServiceReference1.getReservasCarnetResponse getReservasCarnet(ServiceWe_June.ServiceReference1.getReservasCarnetRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/getReservasCarnet", ReplyAction="*")]
+        int getReservasCarnet(int carnet);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/comprobarReserva", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/comprobarReserva", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.comprobarReservaResponse comprobarReserva(ServiceWe_June.ServiceReference1.comprobarReservaRequest request);
         
-        // CODEGEN: Generating message contract since element name libro from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getPrestamosLibro", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/getPrestamosLibro", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.getPrestamosLibroResponse getPrestamosLibro(ServiceWe_June.ServiceReference1.getPrestamosLibroRequest request);
         
-        // CODEGEN: Generating message contract since element name getPrestamosCarnetResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getPrestamosCarnet", ReplyAction="*")]
-        ServiceWe_June.ServiceReference1.getPrestamosCarnetResponse getPrestamosCarnet(ServiceWe_June.ServiceReference1.getPrestamosCarnetRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/getPrestamosCarnet", ReplyAction="*")]
+        int getPrestamosCarnet(int carnet);
         
-        // CODEGEN: Generating message contract since element name TopFiveResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TopFive", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name libro from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/getTomosLibros", ReplyAction="*")]
+        ServiceWe_June.ServiceReference1.getTomosLibrosResponse getTomosLibros(ServiceWe_June.ServiceReference1.getTomosLibrosRequest request);
+        
+        // CODEGEN: Generating message contract since element name TopFiveResult from namespace http://libreria.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://libreria.org/TopFive", ReplyAction="*")]
         ServiceWe_June.ServiceReference1.TopFiveResponse TopFive(ServiceWe_June.ServiceReference1.TopFiveRequest request);
     }
     
@@ -78,7 +80,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class HelloWorldRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.HelloWorldRequestBody Body;
         
         public HelloWorldRequest() {
@@ -105,7 +107,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class HelloWorldResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.HelloWorldResponseBody Body;
         
         public HelloWorldResponse() {
@@ -119,7 +121,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class HelloWorldResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -139,7 +141,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertAutorRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertAutor", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertAutor", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertAutorRequestBody Body;
         
         public insertAutorRequest() {
@@ -153,7 +155,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class insertAutorRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -173,7 +175,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertAutorResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertAutorResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertAutorResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertAutorResponseBody Body;
         
         public insertAutorResponse() {
@@ -200,7 +202,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertCarnetRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertCarnet", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertCarnet", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertCarnetRequestBody Body;
         
         public insertCarnetRequest() {
@@ -214,7 +216,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class insertCarnetRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -242,7 +244,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertCarnetResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertCarnetResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertCarnetResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertCarnetResponseBody Body;
         
         public insertCarnetResponse() {
@@ -256,7 +258,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class insertCarnetResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -276,7 +278,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertLibrosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertLibros", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertLibros", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertLibrosRequestBody Body;
         
         public insertLibrosRequest() {
@@ -290,7 +292,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class insertLibrosRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -326,7 +328,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertLibrosResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertLibrosResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertLibrosResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertLibrosResponseBody Body;
         
         public insertLibrosResponse() {
@@ -353,7 +355,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertPrestamoRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertPrestamo", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertPrestamo", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertPrestamoRequestBody Body;
         
         public insertPrestamoRequest() {
@@ -367,7 +369,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class insertPrestamoRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -391,7 +393,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertPrestamoResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertPrestamoResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertPrestamoResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertPrestamoResponseBody Body;
         
         public insertPrestamoResponse() {
@@ -418,7 +420,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertReservaRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertReserva", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertReserva", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertReservaRequestBody Body;
         
         public insertReservaRequest() {
@@ -432,7 +434,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class insertReservaRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -456,7 +458,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class insertReservaResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertReservaResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="insertReservaResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.insertReservaResponseBody Body;
         
         public insertReservaResponse() {
@@ -483,7 +485,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class deletePrestamoRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="deletePrestamo", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="deletePrestamo", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.deletePrestamoRequestBody Body;
         
         public deletePrestamoRequest() {
@@ -497,7 +499,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class deletePrestamoRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -521,7 +523,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class deletePrestamoResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="deletePrestamoResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="deletePrestamoResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.deletePrestamoResponseBody Body;
         
         public deletePrestamoResponse() {
@@ -548,7 +550,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class deleteReservaRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="deleteReserva", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="deleteReserva", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.deleteReservaRequestBody Body;
         
         public deleteReservaRequest() {
@@ -562,7 +564,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class deleteReservaRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -586,7 +588,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class deleteReservaResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="deleteReservaResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="deleteReservaResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.deleteReservaResponseBody Body;
         
         public deleteReservaResponse() {
@@ -613,7 +615,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class getReservasLibroRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getReservasLibro", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getReservasLibro", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.getReservasLibroRequestBody Body;
         
         public getReservasLibroRequest() {
@@ -627,7 +629,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class getReservasLibroRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -647,7 +649,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class getReservasLibroResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getReservasLibroResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getReservasLibroResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.getReservasLibroResponseBody Body;
         
         public getReservasLibroResponse() {
@@ -661,85 +663,17 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class getReservasLibroResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string getReservasLibroResult;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int getReservasLibroResult;
         
         public getReservasLibroResponseBody() {
         }
         
-        public getReservasLibroResponseBody(string getReservasLibroResult) {
+        public getReservasLibroResponseBody(int getReservasLibroResult) {
             this.getReservasLibroResult = getReservasLibroResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getReservasCarnetRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getReservasCarnet", Namespace="http://tempuri.org/", Order=0)]
-        public ServiceWe_June.ServiceReference1.getReservasCarnetRequestBody Body;
-        
-        public getReservasCarnetRequest() {
-        }
-        
-        public getReservasCarnetRequest(ServiceWe_June.ServiceReference1.getReservasCarnetRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getReservasCarnetRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int carnet;
-        
-        public getReservasCarnetRequestBody() {
-        }
-        
-        public getReservasCarnetRequestBody(int carnet) {
-            this.carnet = carnet;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getReservasCarnetResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getReservasCarnetResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ServiceWe_June.ServiceReference1.getReservasCarnetResponseBody Body;
-        
-        public getReservasCarnetResponse() {
-        }
-        
-        public getReservasCarnetResponse(ServiceWe_June.ServiceReference1.getReservasCarnetResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getReservasCarnetResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string getReservasCarnetResult;
-        
-        public getReservasCarnetResponseBody() {
-        }
-        
-        public getReservasCarnetResponseBody(string getReservasCarnetResult) {
-            this.getReservasCarnetResult = getReservasCarnetResult;
         }
     }
     
@@ -749,7 +683,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class comprobarReservaRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="comprobarReserva", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="comprobarReserva", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.comprobarReservaRequestBody Body;
         
         public comprobarReservaRequest() {
@@ -763,7 +697,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class comprobarReservaRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -787,7 +721,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class comprobarReservaResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="comprobarReservaResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="comprobarReservaResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.comprobarReservaResponseBody Body;
         
         public comprobarReservaResponse() {
@@ -801,16 +735,16 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class comprobarReservaResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string comprobarReservaResult;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int comprobarReservaResult;
         
         public comprobarReservaResponseBody() {
         }
         
-        public comprobarReservaResponseBody(string comprobarReservaResult) {
+        public comprobarReservaResponseBody(int comprobarReservaResult) {
             this.comprobarReservaResult = comprobarReservaResult;
         }
     }
@@ -821,7 +755,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class getPrestamosLibroRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getPrestamosLibro", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getPrestamosLibro", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.getPrestamosLibroRequestBody Body;
         
         public getPrestamosLibroRequest() {
@@ -835,7 +769,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class getPrestamosLibroRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -855,7 +789,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class getPrestamosLibroResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getPrestamosLibroResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getPrestamosLibroResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.getPrestamosLibroResponseBody Body;
         
         public getPrestamosLibroResponse() {
@@ -869,16 +803,16 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class getPrestamosLibroResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string getPrestamosLibroResult;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int getPrestamosLibroResult;
         
         public getPrestamosLibroResponseBody() {
         }
         
-        public getPrestamosLibroResponseBody(string getPrestamosLibroResult) {
+        public getPrestamosLibroResponseBody(int getPrestamosLibroResult) {
             this.getPrestamosLibroResult = getPrestamosLibroResult;
         }
     }
@@ -887,15 +821,15 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getPrestamosCarnetRequest {
+    public partial class getTomosLibrosRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getPrestamosCarnet", Namespace="http://tempuri.org/", Order=0)]
-        public ServiceWe_June.ServiceReference1.getPrestamosCarnetRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTomosLibros", Namespace="http://libreria.org/", Order=0)]
+        public ServiceWe_June.ServiceReference1.getTomosLibrosRequestBody Body;
         
-        public getPrestamosCarnetRequest() {
+        public getTomosLibrosRequest() {
         }
         
-        public getPrestamosCarnetRequest(ServiceWe_June.ServiceReference1.getPrestamosCarnetRequestBody Body) {
+        public getTomosLibrosRequest(ServiceWe_June.ServiceReference1.getTomosLibrosRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -903,17 +837,17 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getPrestamosCarnetRequestBody {
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
+    public partial class getTomosLibrosRequestBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int carnet;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string libro;
         
-        public getPrestamosCarnetRequestBody() {
+        public getTomosLibrosRequestBody() {
         }
         
-        public getPrestamosCarnetRequestBody(int carnet) {
-            this.carnet = carnet;
+        public getTomosLibrosRequestBody(string libro) {
+            this.libro = libro;
         }
     }
     
@@ -921,15 +855,15 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class getPrestamosCarnetResponse {
+    public partial class getTomosLibrosResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="getPrestamosCarnetResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ServiceWe_June.ServiceReference1.getPrestamosCarnetResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="getTomosLibrosResponse", Namespace="http://libreria.org/", Order=0)]
+        public ServiceWe_June.ServiceReference1.getTomosLibrosResponseBody Body;
         
-        public getPrestamosCarnetResponse() {
+        public getTomosLibrosResponse() {
         }
         
-        public getPrestamosCarnetResponse(ServiceWe_June.ServiceReference1.getPrestamosCarnetResponseBody Body) {
+        public getTomosLibrosResponse(ServiceWe_June.ServiceReference1.getTomosLibrosResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -937,17 +871,17 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class getPrestamosCarnetResponseBody {
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
+    public partial class getTomosLibrosResponseBody {
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string getPrestamosCarnetResult;
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int getTomosLibrosResult;
         
-        public getPrestamosCarnetResponseBody() {
+        public getTomosLibrosResponseBody() {
         }
         
-        public getPrestamosCarnetResponseBody(string getPrestamosCarnetResult) {
-            this.getPrestamosCarnetResult = getPrestamosCarnetResult;
+        public getTomosLibrosResponseBody(int getTomosLibrosResult) {
+            this.getTomosLibrosResult = getTomosLibrosResult;
         }
     }
     
@@ -957,7 +891,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class TopFiveRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="TopFive", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="TopFive", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.TopFiveRequestBody Body;
         
         public TopFiveRequest() {
@@ -984,7 +918,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class TopFiveResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="TopFiveResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="TopFiveResponse", Namespace="http://libreria.org/", Order=0)]
         public ServiceWe_June.ServiceReference1.TopFiveResponseBody Body;
         
         public TopFiveResponse() {
@@ -998,7 +932,7 @@ namespace ServiceWe_June.ServiceReference1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://libreria.org/")]
     public partial class TopFiveResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -1151,7 +1085,7 @@ namespace ServiceWe_June.ServiceReference1 {
             return base.Channel.getReservasLibro(request);
         }
         
-        public string getReservasLibro(string libro) {
+        public int getReservasLibro(string libro) {
             ServiceWe_June.ServiceReference1.getReservasLibroRequest inValue = new ServiceWe_June.ServiceReference1.getReservasLibroRequest();
             inValue.Body = new ServiceWe_June.ServiceReference1.getReservasLibroRequestBody();
             inValue.Body.libro = libro;
@@ -1159,17 +1093,8 @@ namespace ServiceWe_June.ServiceReference1 {
             return retVal.Body.getReservasLibroResult;
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ServiceWe_June.ServiceReference1.getReservasCarnetResponse ServiceWe_June.ServiceReference1.WebService1Soap.getReservasCarnet(ServiceWe_June.ServiceReference1.getReservasCarnetRequest request) {
-            return base.Channel.getReservasCarnet(request);
-        }
-        
-        public string getReservasCarnet(int carnet) {
-            ServiceWe_June.ServiceReference1.getReservasCarnetRequest inValue = new ServiceWe_June.ServiceReference1.getReservasCarnetRequest();
-            inValue.Body = new ServiceWe_June.ServiceReference1.getReservasCarnetRequestBody();
-            inValue.Body.carnet = carnet;
-            ServiceWe_June.ServiceReference1.getReservasCarnetResponse retVal = ((ServiceWe_June.ServiceReference1.WebService1Soap)(this)).getReservasCarnet(inValue);
-            return retVal.Body.getReservasCarnetResult;
+        public int getReservasCarnet(int carnet) {
+            return base.Channel.getReservasCarnet(carnet);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1177,7 +1102,7 @@ namespace ServiceWe_June.ServiceReference1 {
             return base.Channel.comprobarReserva(request);
         }
         
-        public string comprobarReserva(int carnet, string libro) {
+        public int comprobarReserva(int carnet, string libro) {
             ServiceWe_June.ServiceReference1.comprobarReservaRequest inValue = new ServiceWe_June.ServiceReference1.comprobarReservaRequest();
             inValue.Body = new ServiceWe_June.ServiceReference1.comprobarReservaRequestBody();
             inValue.Body.carnet = carnet;
@@ -1191,7 +1116,7 @@ namespace ServiceWe_June.ServiceReference1 {
             return base.Channel.getPrestamosLibro(request);
         }
         
-        public string getPrestamosLibro(string libro) {
+        public int getPrestamosLibro(string libro) {
             ServiceWe_June.ServiceReference1.getPrestamosLibroRequest inValue = new ServiceWe_June.ServiceReference1.getPrestamosLibroRequest();
             inValue.Body = new ServiceWe_June.ServiceReference1.getPrestamosLibroRequestBody();
             inValue.Body.libro = libro;
@@ -1199,17 +1124,21 @@ namespace ServiceWe_June.ServiceReference1 {
             return retVal.Body.getPrestamosLibroResult;
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ServiceWe_June.ServiceReference1.getPrestamosCarnetResponse ServiceWe_June.ServiceReference1.WebService1Soap.getPrestamosCarnet(ServiceWe_June.ServiceReference1.getPrestamosCarnetRequest request) {
-            return base.Channel.getPrestamosCarnet(request);
+        public int getPrestamosCarnet(int carnet) {
+            return base.Channel.getPrestamosCarnet(carnet);
         }
         
-        public string getPrestamosCarnet(int carnet) {
-            ServiceWe_June.ServiceReference1.getPrestamosCarnetRequest inValue = new ServiceWe_June.ServiceReference1.getPrestamosCarnetRequest();
-            inValue.Body = new ServiceWe_June.ServiceReference1.getPrestamosCarnetRequestBody();
-            inValue.Body.carnet = carnet;
-            ServiceWe_June.ServiceReference1.getPrestamosCarnetResponse retVal = ((ServiceWe_June.ServiceReference1.WebService1Soap)(this)).getPrestamosCarnet(inValue);
-            return retVal.Body.getPrestamosCarnetResult;
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ServiceWe_June.ServiceReference1.getTomosLibrosResponse ServiceWe_June.ServiceReference1.WebService1Soap.getTomosLibros(ServiceWe_June.ServiceReference1.getTomosLibrosRequest request) {
+            return base.Channel.getTomosLibros(request);
+        }
+        
+        public int getTomosLibros(string libro) {
+            ServiceWe_June.ServiceReference1.getTomosLibrosRequest inValue = new ServiceWe_June.ServiceReference1.getTomosLibrosRequest();
+            inValue.Body = new ServiceWe_June.ServiceReference1.getTomosLibrosRequestBody();
+            inValue.Body.libro = libro;
+            ServiceWe_June.ServiceReference1.getTomosLibrosResponse retVal = ((ServiceWe_June.ServiceReference1.WebService1Soap)(this)).getTomosLibros(inValue);
+            return retVal.Body.getTomosLibrosResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -4,3 +4,9 @@ C:\Users\Pau\Documents\Visual Studio 2013\Projects\ServiceWe_June\ServiceWe_June
 C:\Users\Pau\Documents\Visual Studio 2013\Projects\ServiceWe_June\ServiceWe_June\obj\Debug\ServiceWe_June.csprojResolveAssemblyReference.cache
 C:\Users\Pau\Documents\Visual Studio 2013\Projects\ServiceWe_June\ServiceWe_June\obj\Debug\ServiceWe_June.dll
 C:\Users\Pau\Documents\Visual Studio 2013\Projects\ServiceWe_June\ServiceWe_June\obj\Debug\ServiceWe_June.pdb
+C:\Users\Pau\Documents\GitHub\IPC2J15\Practica1\ServiceWe_June\ServiceWe_June\bin\ServiceWe_June.dll.config
+C:\Users\Pau\Documents\GitHub\IPC2J15\Practica1\ServiceWe_June\ServiceWe_June\bin\ServiceWe_June.dll
+C:\Users\Pau\Documents\GitHub\IPC2J15\Practica1\ServiceWe_June\ServiceWe_June\bin\ServiceWe_June.pdb
+C:\Users\Pau\Documents\GitHub\IPC2J15\Practica1\ServiceWe_June\ServiceWe_June\obj\Debug\ServiceWe_June.csprojResolveAssemblyReference.cache
+C:\Users\Pau\Documents\GitHub\IPC2J15\Practica1\ServiceWe_June\ServiceWe_June\obj\Debug\ServiceWe_June.dll
+C:\Users\Pau\Documents\GitHub\IPC2J15\Practica1\ServiceWe_June\ServiceWe_June\obj\Debug\ServiceWe_June.pdb

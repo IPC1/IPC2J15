@@ -13,5 +13,16 @@ namespace ServiceWe_June
         {
 
         }
+
+        protected void libro_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Libro.aspx");
+        }
+
+        protected void registro_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Registro.aspx");
+        }
+
     }
 }
