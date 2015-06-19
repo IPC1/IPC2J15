@@ -1,0 +1,28 @@
+CREATE DATABASE paqueteria;
+CREATE TABLE usuario (codUsuario int IDENTITY, nombre varchar(25). contraseña int, tipo varchar (25));
+CREATE TABLE departamento(codDepto int IDENTITY, nombre varchar(25));
+CREATE TABLE categoria(codCategoria  int IDENITY, nombre varchar (25), impuesto int);
+CREATE TABLE sede (codSede int IDENTITY, pais varchar(25), direccion varchar (50), noSucursales int, telefono int);
+CREATE TABLE sucursal(codSucursal int IDENTITY, pais varchar(25), direccion varchar(25), noEmpleados int, telefono int, comision int,
+codSede int FOREIGN KEY REFERENCES sede (codSede));
+CREATE TABLE asigSucursal (codAsigSucursalint IDENTITY, 
+codSucursal int FOREIGN KEY REFERENCES sucursal (codSucursal), 
+codDepto int FOREIGN KEY REFERENCES departamento(codDepto));
+CREATE TABLE empleado (codEmpleado int IDENTITY, nombre varchar (25), apellido varchar (25), dpi int, telefono int, direccion varchar (25), tipo varchar (25), sueldo int,
+codAsigSucursal FOREIGN KEY REFERENCES asigSucursal (codAsigSucursal));
+CREATE TABLE contratato (codContrato int IDENTITY, puesto varchar (25),
+codEmpleado FOREIGN KEY REFERENCES empleado (codEmpleado),
+codDirector FOREIGN KEY REFERENCES empleado (codEmpleado));
+CREATE TABLE cliente (casillaInternacional int IDENTITY, nombre varchar (25), apellido varchar (25), nit int, telefono int, direccion varchar (25), tarjeta int,
+codUsuario FOREIGN KEY REFERENCES usuario(codUsuario));
+CREATE TABLE paquete (codPaquete int IDENTITY, peso int, valor int,
+codCategoria int FOREIGN KEY REFERENCES categoria(codCategoria),
+casillaInternacional int FOREIGN KEY REFERENCES cliente (casillaInternacional));
+CREATE TABLE historial (codEstado, fecha date, estado varchar (25), 
+codSucursal int FOREIGN KEY REFERENCES sucursal(codSucursal),
+codPaquete int FOREIGN KEY REFERENCES paquete(codPaquete));
+CREATE TABLE factura (codFactura int IDENTITY, nombre varchar (25), fecha date, nit int, total int, comision int,
+codEmpleado int FOREIGN KEY REFERNECES empleado (codEmpleado));
+CREATE TABLE detalleFac (codDetalleFac int IDENTITY, impuesto int, costo int,
+codPaquete FOREIGN KEY REFERENCES paquete (codPaquete),
+codFactura FOREIGN KEY REFERNECES factura (codFactura));

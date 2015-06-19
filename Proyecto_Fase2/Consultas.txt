@@ -1,0 +1,29 @@
+
+INSERTAR USUARIO //se usará antes de un registro de empleados o clientes devuelve el codUsuario
+SET identity_insert usuario off;
+INSERT INTO usuario (nombre, contraseña, tipo)
+values ('nombre', 'contraseña', 'cliente');
+SELECT usuario (codUsuario) where  nombre= 'nombre' and contraseña0 'contraseña;
+
+
+
+REGISTRO
+INSERTAR NUEVO CLIENTE //devuelve la casilla internacional
+
+USE paqueteria;
+SET identity_insert clientes off;
+INSERT INTO cliente (nombre, apellidos, nit, telefono, direccion, tarjeta, codUsuario)
+values ('nombre', 'apellidos', nit, telefono, 'direccion', tarjeta, @usuario);
+select casillaInternacional from cliente where codUsuario= @codUsuario;
+
+
+
+
+
+REGISTRO
+INSERTAR NUEVO EMPLEADO//
+
+USE paqueteria;
+SET identity_insert empleado off;
+INSERT INTO empleado (nombre, apellido, dpi, telefono, direccion, tipo, sueldo, codUsuario, codSucursal)
+VALUES ('nombre', 'apellido', dpi, telefono, 'direccion', 'tipo', sueldo, usuario, sucursal
