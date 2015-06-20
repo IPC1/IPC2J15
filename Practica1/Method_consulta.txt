@@ -1,4 +1,8 @@
- [WebMethod]
+private static string sqlConnectionString = "Data Source=PORTÁTIL;Initial Catalog=libreria;Integrated Security=True"; 
+
+
+
+[WebMethod]
  public string Consulta2()
  {
      SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
