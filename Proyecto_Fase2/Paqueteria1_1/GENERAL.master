@@ -6,26 +6,48 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
+        
+
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style2 {
+            width: 90px;
+        }
+        .auto-style3 {
+            width: 113px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="margin-left: 40px">
+        <u>
+            <p>
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style3">
+        <u>
+                            <a href="REGISTRO.aspx">REGISTRO</a></u></td>
+                        <td class="auto-style2">
+        <u>
+                            <a href="LOGIN.aspx">LOG IN</a>  
+        </u>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="auto-style3"></td>
+                        <td class="auto-style2"></td>
+                        <td></td>
+                    </tr>
+                    </table>
+        </p>
+        </u>
+        <div>
+            <li>
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="REGISTRO" runat="server" Text="Registro"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="LOGIN" runat="server" Text="Log In"></asp:Label>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <asp:Image ID="Image1" runat="server" Height="368px" Width="703px" />
+            
         
         </asp:ContentPlaceHolder>
-&nbsp;&nbsp;&nbsp;
     </div>
     </form>
 </body>

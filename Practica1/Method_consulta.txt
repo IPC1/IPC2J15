@@ -13,12 +13,12 @@ private static string sqlConnectionString = "Data Source=PORTÁTIL;Initial Catalo
      da.Fill(dts, "autor");
      DataTable dt = new DataTable();
      dt = dts.Tables["autor"];
-     string nombre = "";
+     string palabra = "";
      foreach (DataRow dr in dt.Rows)
-{ nombre= nombre +" "+ dr["nombre"].ToString();
+{ palabra = palabra +" "+ dr["nombre"].ToString();
 
 }
-     return nombre;
+     return palabra;
          } 
 
 

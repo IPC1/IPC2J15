@@ -47,6 +47,106 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="VerificarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerificarUsuarioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCategoria">
+        <s:complexType />
+      </s:element>
+      <s:element name="getCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCategoriaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSucursal">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSucursalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSucursalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImpuesto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImpuestoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getImpuestoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getComision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getComisionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getComisionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarImpuesto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="categoria" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="impuesto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarImpuestoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarComision">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sucursal" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="comision" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarComisionResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -67,6 +167,54 @@
   <wsdl:message name="insertarClienteSoapOut">
     <wsdl:part name="parameters" element="tns:insertarClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="VerificarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="VerificarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:getCategoria" />
+  </wsdl:message>
+  <wsdl:message name="getCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:getCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSucursalSoapIn">
+    <wsdl:part name="parameters" element="tns:getSucursal" />
+  </wsdl:message>
+  <wsdl:message name="getSucursalSoapOut">
+    <wsdl:part name="parameters" element="tns:getSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="getImpuestoSoapIn">
+    <wsdl:part name="parameters" element="tns:getImpuesto" />
+  </wsdl:message>
+  <wsdl:message name="getImpuestoSoapOut">
+    <wsdl:part name="parameters" element="tns:getImpuestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getComisionSoapIn">
+    <wsdl:part name="parameters" element="tns:getComision" />
+  </wsdl:message>
+  <wsdl:message name="getComisionSoapOut">
+    <wsdl:part name="parameters" element="tns:getComisionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:getCliente" />
+  </wsdl:message>
+  <wsdl:message name="getClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:getClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarImpuestoSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarImpuesto" />
+  </wsdl:message>
+  <wsdl:message name="insertarImpuestoSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarImpuestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarComisionSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarComision" />
+  </wsdl:message>
+  <wsdl:message name="insertarComisionSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarComisionResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -79,6 +227,38 @@
     <wsdl:operation name="insertarCliente">
       <wsdl:input message="tns:insertarClienteSoapIn" />
       <wsdl:output message="tns:insertarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarUsuario">
+      <wsdl:input message="tns:VerificarUsuarioSoapIn" />
+      <wsdl:output message="tns:VerificarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCategoria">
+      <wsdl:input message="tns:getCategoriaSoapIn" />
+      <wsdl:output message="tns:getCategoriaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSucursal">
+      <wsdl:input message="tns:getSucursalSoapIn" />
+      <wsdl:output message="tns:getSucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImpuesto">
+      <wsdl:input message="tns:getImpuestoSoapIn" />
+      <wsdl:output message="tns:getImpuestoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getComision">
+      <wsdl:input message="tns:getComisionSoapIn" />
+      <wsdl:output message="tns:getComisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCliente">
+      <wsdl:input message="tns:getClienteSoapIn" />
+      <wsdl:output message="tns:getClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarImpuesto">
+      <wsdl:input message="tns:insertarImpuestoSoapIn" />
+      <wsdl:output message="tns:insertarImpuestoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarComision">
+      <wsdl:input message="tns:insertarComisionSoapIn" />
+      <wsdl:output message="tns:insertarComisionSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
@@ -110,6 +290,78 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="VerificarUsuario">
+      <soap:operation soapAction="http://tempuri.org/VerificarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCategoria">
+      <soap:operation soapAction="http://tempuri.org/getCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSucursal">
+      <soap:operation soapAction="http://tempuri.org/getSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImpuesto">
+      <soap:operation soapAction="http://tempuri.org/getImpuesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getComision">
+      <soap:operation soapAction="http://tempuri.org/getComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCliente">
+      <soap:operation soapAction="http://tempuri.org/getCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarImpuesto">
+      <soap:operation soapAction="http://tempuri.org/insertarImpuesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarComision">
+      <soap:operation soapAction="http://tempuri.org/insertarComision" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -133,6 +385,78 @@
     </wsdl:operation>
     <wsdl:operation name="insertarCliente">
       <soap12:operation soapAction="http://tempuri.org/insertarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/VerificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCategoria">
+      <soap12:operation soapAction="http://tempuri.org/getCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSucursal">
+      <soap12:operation soapAction="http://tempuri.org/getSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImpuesto">
+      <soap12:operation soapAction="http://tempuri.org/getImpuesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getComision">
+      <soap12:operation soapAction="http://tempuri.org/getComision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCliente">
+      <soap12:operation soapAction="http://tempuri.org/getCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarImpuesto">
+      <soap12:operation soapAction="http://tempuri.org/insertarImpuesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarComision">
+      <soap12:operation soapAction="http://tempuri.org/insertarComision" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

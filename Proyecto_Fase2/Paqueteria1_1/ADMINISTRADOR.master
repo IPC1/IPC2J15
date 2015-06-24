@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/GENERAL.master" AutoEventWireup="true" CodeFile="ADMINISTRADOR.master.cs" Inherits="ADMINISTRADOR" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style4 {
+            width: 253px;
+        }
+        .auto-style5 {
+            width: 611px;
+        }
+        .auto-style6 {
+            width: 101px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <table style="width:100%;">
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td class="auto-style4"><a href="APERFIL.aspx">PERFIL</a></td>
+                        <td><a href="LOGOUT.aspx">LOG OUT</a></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6"><a href="COMISION.aspx"><u>C</u>OMISION</a></td>
+            <td class="auto-style5"><a href="CATEGORIAS.aspx"><u>C</u>ATEGORIAS</a></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+

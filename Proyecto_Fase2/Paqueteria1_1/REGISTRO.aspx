@@ -127,7 +127,7 @@
                             <asp:Label ID="NIT" runat="server" Text="NIT"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TNIT" runat="server" OnTextChanged="TextBox3_TextChanged" style="margin-left: 0px" Width="206px"></asp:TextBox>
+                            <asp:TextBox ID="TNIT" runat="server"  style="margin-left: 0px" Width="206px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

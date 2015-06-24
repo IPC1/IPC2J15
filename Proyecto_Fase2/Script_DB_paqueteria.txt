@@ -8,7 +8,7 @@ CREATE TABLE categoria(codCategoria  int IDENTITY PRIMARY KEY, nombre varchar (2
 
 CREATE TABLE sede (codSede int IDENTITY PRIMARY KEY, pais varchar(25), direccion varchar (50), noSucursales int, telefono int);
 
-CREATE TABLE sucursal(codSucursal int IDENTITY PRIMARY KEY, pais varchar(25), direccion varchar(25), noEmpleados int, telefono int, comision int,
+CREATE TABLE sucursal(codSucursal int IDENTITY PRIMARY KEY, nombre varchar(25), pais varchar(25), direccion varchar(25), noEmpleados int, telefono int, comision int,
 codSede int FOREIGN KEY REFERENCES sede (codSede));
 
 CREATE TABLE asigSucursal (codAsigSucursal int IDENTITY PRIMARY KEY, 
