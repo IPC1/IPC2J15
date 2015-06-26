@@ -17,7 +17,15 @@ public partial class CPERFIL : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        
+        this.Session["UserID"] = 1;
+        int casilla = Convert.ToInt32(Session["UserID"]);
+        List<string> datos = servicio.getCliente(casilla);
+        TextBox1.Text = Session["UserID"].ToString();
+        TextBox2.Text = (datos.ElementAt(1)).ToString();
+        TextBox3.Text = (datos.ElementAt(2)).ToString();
+        TextBox4.Text = (datos.ElementAt(3)).ToString();
+        TextBox5.Text = (datos.ElementAt(4)).ToString();
+        TextBox6.Text = (datos.ElementAt(5)).ToString();
     }
     protected void Button2_Click(object sender, EventArgs e)
     {

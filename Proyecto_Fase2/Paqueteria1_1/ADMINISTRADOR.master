@@ -9,7 +9,7 @@
             width: 611px;
         }
         .auto-style6 {
-            width: 101px;
+            width: 123px;
         }
     </style>
 </asp:Content>
@@ -29,8 +29,8 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6"><a href="COMISION.aspx"><u>C</u>OMISION</a></td>
-            <td class="auto-style5"><a href="CATEGORIAS.aspx"><u>C</u>ATEGORIAS</a></td>
+            <td class="auto-style6"><a href="csvComision.aspx">SUCURSALES</a></td>
+            <td class="auto-style5"><a href="csvCategoria.aspx"><u>C</u>ATEGORIAS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="csvEmpleados.aspx">EMPLEADOS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="csvExtravios.aspx">EXTRAVIOS</a></td>
             <td>&nbsp;</td>
         </tr>
         <tr>

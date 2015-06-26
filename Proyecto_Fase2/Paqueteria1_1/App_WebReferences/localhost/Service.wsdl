@@ -47,6 +47,41 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="insertarSucursal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="noEmpleados" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="comision" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sede" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarSucursalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertarSucursalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarCategoria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="impuesto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarCategoriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertarCategoriaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="VerificarUsuario">
         <s:complexType>
           <s:sequence>
@@ -80,6 +115,16 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getSucursalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSede">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSedeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSedeResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -121,10 +166,15 @@
       <s:element name="getClienteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getClienteResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="getClienteResult" type="tns:ArrayOfString" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="insertarImpuesto">
         <s:complexType>
           <s:sequence>
@@ -147,6 +197,90 @@
       <s:element name="insertarComisionResponse">
         <s:complexType />
       </s:element>
+      <s:element name="getcodPaquetes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodPaquetesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getcodPaquetesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodLote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="paquete" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getcodLoteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodEstadoLote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lote" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodEstadoLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getcodEstadoLoteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodSucursalAsig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lote" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodSucursalAsigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getcodSucursalAsigResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEstadoHistorial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="historial" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEstadoHistorialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEstadoHistorialResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSucursalEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codSucursal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSucursalEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSucursalEstadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -167,6 +301,18 @@
   <wsdl:message name="insertarClienteSoapOut">
     <wsdl:part name="parameters" element="tns:insertarClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="insertarSucursalSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarSucursal" />
+  </wsdl:message>
+  <wsdl:message name="insertarSucursalSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarCategoriaSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarCategoria" />
+  </wsdl:message>
+  <wsdl:message name="insertarCategoriaSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarCategoriaResponse" />
+  </wsdl:message>
   <wsdl:message name="VerificarUsuarioSoapIn">
     <wsdl:part name="parameters" element="tns:VerificarUsuario" />
   </wsdl:message>
@@ -184,6 +330,12 @@
   </wsdl:message>
   <wsdl:message name="getSucursalSoapOut">
     <wsdl:part name="parameters" element="tns:getSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSedeSoapIn">
+    <wsdl:part name="parameters" element="tns:getSede" />
+  </wsdl:message>
+  <wsdl:message name="getSedeSoapOut">
+    <wsdl:part name="parameters" element="tns:getSedeResponse" />
   </wsdl:message>
   <wsdl:message name="getImpuestoSoapIn">
     <wsdl:part name="parameters" element="tns:getImpuesto" />
@@ -215,6 +367,42 @@
   <wsdl:message name="insertarComisionSoapOut">
     <wsdl:part name="parameters" element="tns:insertarComisionResponse" />
   </wsdl:message>
+  <wsdl:message name="getcodPaquetesSoapIn">
+    <wsdl:part name="parameters" element="tns:getcodPaquetes" />
+  </wsdl:message>
+  <wsdl:message name="getcodPaquetesSoapOut">
+    <wsdl:part name="parameters" element="tns:getcodPaquetesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getcodLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:getcodLote" />
+  </wsdl:message>
+  <wsdl:message name="getcodLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:getcodLoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getcodEstadoLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:getcodEstadoLote" />
+  </wsdl:message>
+  <wsdl:message name="getcodEstadoLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:getcodEstadoLoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getcodSucursalAsigSoapIn">
+    <wsdl:part name="parameters" element="tns:getcodSucursalAsig" />
+  </wsdl:message>
+  <wsdl:message name="getcodSucursalAsigSoapOut">
+    <wsdl:part name="parameters" element="tns:getcodSucursalAsigResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEstadoHistorialSoapIn">
+    <wsdl:part name="parameters" element="tns:getEstadoHistorial" />
+  </wsdl:message>
+  <wsdl:message name="getEstadoHistorialSoapOut">
+    <wsdl:part name="parameters" element="tns:getEstadoHistorialResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSucursalEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:getSucursalEstado" />
+  </wsdl:message>
+  <wsdl:message name="getSucursalEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:getSucursalEstadoResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -228,6 +416,14 @@
       <wsdl:input message="tns:insertarClienteSoapIn" />
       <wsdl:output message="tns:insertarClienteSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="insertarSucursal">
+      <wsdl:input message="tns:insertarSucursalSoapIn" />
+      <wsdl:output message="tns:insertarSucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarCategoria">
+      <wsdl:input message="tns:insertarCategoriaSoapIn" />
+      <wsdl:output message="tns:insertarCategoriaSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="VerificarUsuario">
       <wsdl:input message="tns:VerificarUsuarioSoapIn" />
       <wsdl:output message="tns:VerificarUsuarioSoapOut" />
@@ -239,6 +435,10 @@
     <wsdl:operation name="getSucursal">
       <wsdl:input message="tns:getSucursalSoapIn" />
       <wsdl:output message="tns:getSucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSede">
+      <wsdl:input message="tns:getSedeSoapIn" />
+      <wsdl:output message="tns:getSedeSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getImpuesto">
       <wsdl:input message="tns:getImpuestoSoapIn" />
@@ -259,6 +459,30 @@
     <wsdl:operation name="insertarComision">
       <wsdl:input message="tns:insertarComisionSoapIn" />
       <wsdl:output message="tns:insertarComisionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getcodPaquetes">
+      <wsdl:input message="tns:getcodPaquetesSoapIn" />
+      <wsdl:output message="tns:getcodPaquetesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getcodLote">
+      <wsdl:input message="tns:getcodLoteSoapIn" />
+      <wsdl:output message="tns:getcodLoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getcodEstadoLote">
+      <wsdl:input message="tns:getcodEstadoLoteSoapIn" />
+      <wsdl:output message="tns:getcodEstadoLoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getcodSucursalAsig">
+      <wsdl:input message="tns:getcodSucursalAsigSoapIn" />
+      <wsdl:output message="tns:getcodSucursalAsigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEstadoHistorial">
+      <wsdl:input message="tns:getEstadoHistorialSoapIn" />
+      <wsdl:output message="tns:getEstadoHistorialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSucursalEstado">
+      <wsdl:input message="tns:getSucursalEstadoSoapIn" />
+      <wsdl:output message="tns:getSucursalEstadoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
@@ -290,6 +514,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarSucursal">
+      <soap:operation soapAction="http://tempuri.org/insertarSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarCategoria">
+      <soap:operation soapAction="http://tempuri.org/insertarCategoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="VerificarUsuario">
       <soap:operation soapAction="http://tempuri.org/VerificarUsuario" style="document" />
       <wsdl:input>
@@ -310,6 +552,15 @@
     </wsdl:operation>
     <wsdl:operation name="getSucursal">
       <soap:operation soapAction="http://tempuri.org/getSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSede">
+      <soap:operation soapAction="http://tempuri.org/getSede" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -362,6 +613,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getcodPaquetes">
+      <soap:operation soapAction="http://tempuri.org/getcodPaquetes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodLote">
+      <soap:operation soapAction="http://tempuri.org/getcodLote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodEstadoLote">
+      <soap:operation soapAction="http://tempuri.org/getcodEstadoLote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodSucursalAsig">
+      <soap:operation soapAction="http://tempuri.org/getcodSucursalAsig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstadoHistorial">
+      <soap:operation soapAction="http://tempuri.org/getEstadoHistorial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSucursalEstado">
+      <soap:operation soapAction="http://tempuri.org/getSucursalEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -392,6 +697,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarSucursal">
+      <soap12:operation soapAction="http://tempuri.org/insertarSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarCategoria">
+      <soap12:operation soapAction="http://tempuri.org/insertarCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="VerificarUsuario">
       <soap12:operation soapAction="http://tempuri.org/VerificarUsuario" style="document" />
       <wsdl:input>
@@ -412,6 +735,15 @@
     </wsdl:operation>
     <wsdl:operation name="getSucursal">
       <soap12:operation soapAction="http://tempuri.org/getSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSede">
+      <soap12:operation soapAction="http://tempuri.org/getSede" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -457,6 +789,60 @@
     </wsdl:operation>
     <wsdl:operation name="insertarComision">
       <soap12:operation soapAction="http://tempuri.org/insertarComision" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodPaquetes">
+      <soap12:operation soapAction="http://tempuri.org/getcodPaquetes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodLote">
+      <soap12:operation soapAction="http://tempuri.org/getcodLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodEstadoLote">
+      <soap12:operation soapAction="http://tempuri.org/getcodEstadoLote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodSucursalAsig">
+      <soap12:operation soapAction="http://tempuri.org/getcodSucursalAsig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstadoHistorial">
+      <soap12:operation soapAction="http://tempuri.org/getEstadoHistorial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSucursalEstado">
+      <soap12:operation soapAction="http://tempuri.org/getSucursalEstado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

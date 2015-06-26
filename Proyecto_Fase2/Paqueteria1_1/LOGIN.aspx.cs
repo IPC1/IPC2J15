@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class LOGIN : System.Web.UI.Page
 {
+    public static int ID;
     localhost.ServiceSoapClient servicio = new localhost.ServiceSoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -30,10 +31,11 @@ public partial class LOGIN : System.Web.UI.Page
             }
             else if (tipo == "administrador")
             {
-                Server.Transfer("ADMIN.aspx");
+                Server.Transfer("APERFIL.aspx");
             }
-            this.Session["UserID"] = verificacion;
-            this.Session["UserName"] = usuario;
+             ID= verificacion;
+             Session["ID"] = verificacion;
+             Session["nombre"] = usuario;            
         }
         else
         {

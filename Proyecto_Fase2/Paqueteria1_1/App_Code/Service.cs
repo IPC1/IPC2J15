@@ -75,6 +75,52 @@ public class Service : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public string insertarSucursal(string nombre, string pais, string direccion, int noEmpleados, int telefono, int comision,  string sede)
+    {
+        string vel = "";
+        try
+        {
+            SqlConnection con = new SqlConnection(sqlConnectionString);
+            con.Open();
+            string consulta = "USE paqueteria;"
+        +"SET identity_insert sucursal off;"
+            +"declare @sede int =(select codSede from sede where nombre='"+sede+"');"
+            +"Insert into sucursal (nombre, pais,direccion, noEmpleados, telefono,comision,codSede)"
+            +"Values ('" + nombre + "','" + pais + "','" + direccion + "','" + noEmpleados + "','" + telefono + "','" + comision + "', @sede)";
+            SqlDataAdapter adap = new SqlDataAdapter(consulta, con);
+            SqlCommand cmd;
+            cmd = new SqlCommand(consulta, con);
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            vel = "no se pudo" + ex;
+        }
+        return vel;
+    }
+
+    [WebMethod]
+    public string insertarCategoria(string nombre, int impuesto)
+    {
+        string vel = "";
+        try
+        {
+           SqlConnection con = new SqlConnection(sqlConnectionString);
+            con.Open();
+            string consulta = "Insert into categoria (nombre, impuesto) Values ('" + nombre + "','" + impuesto + "')";
+            SqlDataAdapter adap = new SqlDataAdapter(consulta, con);
+            SqlCommand cmd;
+            cmd = new SqlCommand(consulta, con);
+            cmd.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            vel = "no se pudo" + ex;
+        }
+        return vel;
+    }
+    
+    [WebMethod]
     public int VerificarUsuario(string nombre, string contraseña, string tipo)
     {
         SqlConnection conexion = new SqlConnection();
@@ -135,7 +181,26 @@ public class Service : System.Web.Services.WebService
         return palabra;
     }
 
-   
+
+    [WebMethod]
+    public string getSede()
+    {
+        SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+        string sql = "select nombre from  sede";
+        SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+        DataSet dts = new DataSet();
+        da.Fill(dts, "autor");
+        DataTable dt = new DataTable();
+        dt = dts.Tables["autor"];
+        string palabra = "";
+        foreach (DataRow dr in dt.Rows)
+        {
+            palabra = palabra + "," + dr["nombre"].ToString();
+
+        }
+        return palabra;
+    }
+
 
     [WebMethod]
     public int getImpuesto(string nombre)
@@ -185,43 +250,33 @@ public class Service : System.Web.Services.WebService
 
 
     [WebMethod]
-    public string getCliente(int casilla)
+    public List<string> getCliente(int casilla)
     {
+            List<string> datos = new List<string>();
+            SqlCommand comando = new SqlCommand();
         string sql = "USE paqueteria;"
         + "select casillaInternacional, nombre, apellido, nit, telefono, direccion, tarjeta from cliente where  casillaInternacional= '" + casilla + "';";
-        SqlConnection sqlConn = new SqlConnection();
-        SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
-        DataSet dts = new DataSet();
-        da.Fill(dts, "autor");
-        DataTable dt = new DataTable();
-        dt = dts.Tables["autor"];
-        string palabra = "";
-        foreach (DataRow dr in dt.Rows)
-        {
-            palabra = palabra + "," + dr["nombre"].ToString();
-
-        }
-        return palabra;
-        /*string palabra="";
-        using (connection)
-        {
-            SqlCommand command = new SqlCommand(
-             sql,
-              connection);
-            connection.Open();
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            while (reader.HasRows)
-            {   while (reader.Read())
+            comando.CommandText = sql;
+            SqlConnection conexion = new SqlConnection(sqlConnectionString);
+            comando.Connection = conexion;
+            conexion.Open();
+            SqlDataReader lector = comando.ExecuteReader();
+            if (lector.HasRows)
+            {
+                while (lector.Read())
                 {
-                     palabra = reader.GetInt32(0)+","+reader.GetString(1)+","+ reader.GetString(2)+","+reader.GetInt32(3)
-                     +","+reader.GetInt32(4)+","+reader.GetString(5)+","+reader.GetInt32(6);
+                    datos.Add(Convert.ToString(lector.GetInt32(0)));
+                    datos.Add(lector.GetString(1));
+                    datos.Add(lector.GetString(2));
+                    datos.Add(Convert.ToString(lector.GetInt32(2)));
+                    datos.Add(Convert.ToString(lector.GetInt32(3)));
+                    datos.Add(lector.GetString(4));
+                    datos.Add(Convert.ToString(lector.GetInt32(5)));
                 }
-                reader.NextResult();
             }
-            return palabra; */
+            return datos;
         }
+
     [WebMethod]
     public void insertarImpuesto(string categoria,int impuesto) //retorna el nuevo impuesto
     {
@@ -266,4 +321,125 @@ public class Service : System.Web.Services.WebService
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
     }
+
+
+    [WebMethod]
+    public string getcodPaquetes(int casilla)//paquetes de un cliente en un string separado por comas
+    {
+        SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+        string sql = "select codPaquete from  paquete where casillaInternacional ='"+casilla+"';";
+        SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+        DataSet dts = new DataSet();
+        da.Fill(dts, "paquete");
+        DataTable dt = new DataTable();
+        dt = dts.Tables["paquete"];
+        string palabra="";
+        foreach (DataRow dr in dt.Rows)
+        {
+            palabra = palabra + "," + dr["codPaquete"].ToString();
+
+        }
+        return palabra;
+    }
+
+    [WebMethod]
+    public string getcodLote(int paquete)// codigo de lotes en los que a estado un paquete en un string separado por comas
+    {
+        SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+        string sql = "select codLote from  asigLote where codPaquete ='" + paquete + "';";
+        SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+        DataSet dts = new DataSet();
+        da.Fill(dts, "asigLote");
+        DataTable dt = new DataTable();
+        dt = dts.Tables["asigLote"];
+        string palabra = "";
+        foreach (DataRow dr in dt.Rows)
+        {
+            palabra = palabra + "," + dr["codLote"].ToString();
+
+        }
+        return palabra;
+    }
+
+    [WebMethod]
+    public string getcodEstadoLote(int lote)//codigo de estado de un lote por fecha en un string separados por comas
+    {
+        SqlConnection con = new SqlConnection(sqlConnectionString);
+        string sql = "select codEstado from  historial where codLote ='" + lote + "'"
+            +"order by fecha;";
+        SqlDataAdapter da = new SqlDataAdapter(sql, con);
+        DataSet dts = new DataSet();
+        da.Fill(dts, "historial");
+        DataTable dt = new DataTable();
+        dt = dts.Tables["historial"];
+        string palabra = "";
+        foreach (DataRow dr in dt.Rows)
+        {
+            palabra = palabra + "," + dr["codEstado"].ToString();
+
+        }
+        return palabra;
+    }
+
+
+    [WebMethod]
+    public string getcodSucursalAsig(int lote)//cod de la asignacion del estado por fecha en un string separado por comas
+    {
+        SqlConnection sqlConn = new SqlConnection(sqlConnectionString);
+        string sql = "select codSucursal from  historial where codLote ='" + lote + "'"
+            + "order by fecha;";
+        SqlDataAdapter da = new SqlDataAdapter(sql, sqlConn);
+        DataSet dts = new DataSet();
+        da.Fill(dts, "autor");
+        DataTable dt = new DataTable();
+        dt = dts.Tables["autor"];
+        string palabra = "";
+        foreach (DataRow dr in dt.Rows)
+        {
+            palabra = palabra + "," + dr["nombre"].ToString();
+
+        }
+        return palabra;
+    }
+
+    [WebMethod]
+    public string getEstadoHistorial(int historial)// estado de un codEstado 
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        string sql = "select estado from  historial where codEstado ='" + historial + "'";
+          //nuestro comando
+        SqlCommand comando = new SqlCommand();
+        //asignamos al objeto de conexión la cadena
+        conexion.ConnectionString = sqlConnectionString;
+        //indicamos al comando la conexión
+        comando.Connection = conexion;
+        //se abre la conexión
+        conexion.Open();
+        //asignamos al comando la consulta de COUNT
+        comando.CommandText = sql;
+        //guardamos el resultado en el TextBox txt_num_ventas
+        string palabra = (comando.ExecuteScalar()).ToString();
+        return palabra;
+    }
+
+    [WebMethod]
+    public string getSucursalEstado(int codSucursal)//nombre de la sucursal segun su codigo
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        string sql = "select nombre from  sucursal where codSucursal ='" + codSucursal + "'";
+        //nuestro comando
+        SqlCommand comando = new SqlCommand();
+        //asignamos al objeto de conexión la cadena
+        conexion.ConnectionString = sqlConnectionString;
+        //indicamos al comando la conexión
+        comando.Connection = conexion;
+        //se abre la conexión
+        conexion.Open();
+        //asignamos al comando la consulta de COUNT
+        comando.CommandText = sql;
+        //guardamos el resultado en el TextBox txt_num_ventas
+        string palabra = (comando.ExecuteScalar()).ToString();
+        return palabra;
+    }
+
     }
