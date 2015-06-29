@@ -66,6 +66,7 @@
                                     <asp:ListItem>cliente</asp:ListItem>
                                     <asp:ListItem>empleado</asp:ListItem>
                                     <asp:ListItem>administrador</asp:ListItem>
+                                    <asp:ListItem>director</asp:ListItem>
                                 </asp:RadioButtonList>
                             </td>
                             <td>

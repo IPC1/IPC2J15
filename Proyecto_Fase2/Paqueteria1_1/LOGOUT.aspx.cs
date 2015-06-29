@@ -9,8 +9,9 @@ public partial class LOGOUT : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.Session["UserID"] = "";
-        this.Session["UserName"] = "";
+        this.Session["ID"] = "";
+        this.Session["Name"] = "";
+        this.Session["Departamento"] = "";
         Server.Transfer("LOGIN.aspx");
     }
 }

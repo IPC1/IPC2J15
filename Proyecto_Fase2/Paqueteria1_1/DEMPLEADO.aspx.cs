@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class CSV : System.Web.UI.Page
+public partial class DEMPLEADO : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -14,7 +14,7 @@ public partial class CSV : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        String savePath = @"C:\Users\Pau\Downloads\";
+          String savePath = @"C:\Users\Pau\Downloads\";
         if (FileUpload1.HasFile)
         {
             String fileName = FileUpload1.FileName;
@@ -22,7 +22,7 @@ public partial class CSV : System.Web.UI.Page
             FileUpload1.SaveAs(savePath);
             parseCSV2(savePath);
             GridView1.DataBind();
-            Response.Redirect("csvCategoria.aspx");
+            Response.Redirect("DEMPLEADO.aspx");
         }
     }
     public List<string[]> parseCSV2(string path)
@@ -39,10 +39,11 @@ public partial class CSV : System.Web.UI.Page
                 row = line.Split(',');
                 parsedData.Add(row);
                 localhost.ServiceSoapClient servicio = new localhost.ServiceSoapClient();
-                servicio.insertarCategoria(row[0],Convert.ToInt32(row[1]));
+                servicio.insertarEmpleado(row[0],row[1],Convert.ToInt32(row[2]),row[3],row[4]);
              }
             
         }
         return parsedData;
     }
+    
 }

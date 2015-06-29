@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/GENERAL.master" AutoEventWireup="true" CodeFile="DIRECTOR.master.cs" Inherits="Director" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style4 {
+            width: 154px;
+        }
+        .auto-style5 {
+            width: 149px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <table style="width:100%;">
+        <tr>
+            <td class="auto-style4"><a href="DCONTRATAR.aspx">EMPLEADOS</a> </td>
+            <td class="auto-style5"><a href="DEMPLEADOS.aspx">CONTRATAR</a></td>
+            <td><a href="csvCategoria.aspx">BUSCAR</a></td>
+        </tr>
+    </table>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+

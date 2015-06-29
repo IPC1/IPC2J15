@@ -12,6 +12,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="insertarEmpleado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sueldo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sucursal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="departamento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarEmpleadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertarEmpleadoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="insertarUsuario">
         <s:complexType>
           <s:sequence>
@@ -46,6 +64,23 @@
             <s:element minOccurs="0" maxOccurs="1" name="insertarClienteResult" type="s:string" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="reservarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="telefono" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tarjeta" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="contraseña" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="reservarClienteResponse">
+        <s:complexType />
       </s:element>
       <s:element name="insertarSucursal">
         <s:complexType>
@@ -82,7 +117,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="VerificarUsuario">
+      <s:element name="VerificarCliente">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
@@ -91,10 +126,82 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="VerificarUsuarioResponse">
+      <s:element name="VerificarClienteResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="VerificarUsuarioResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="VerificarClienteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarEmpleadp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarEmpleadpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerificarEmpleadpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDeptoAsigSucursal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codAsigSucursal" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDeptoAsigSucursalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDeptoAsigSucursalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodDeptoNombre">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="depto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcodDeptoNombreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getcodDeptoNombreResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTipocodEmpleado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="empleado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTipocodEmpleadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTipocodEmpleadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAsigSucursalCodEmpleado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="empleado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAsigSucursalCodEmpleadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getAsigSucursalCodEmpleadoResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -289,6 +396,12 @@
   <wsdl:message name="HelloWorldSoapOut">
     <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
   </wsdl:message>
+  <wsdl:message name="insertarEmpleadoSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="insertarEmpleadoSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarEmpleadoResponse" />
+  </wsdl:message>
   <wsdl:message name="insertarUsuarioSoapIn">
     <wsdl:part name="parameters" element="tns:insertarUsuario" />
   </wsdl:message>
@@ -300,6 +413,12 @@
   </wsdl:message>
   <wsdl:message name="insertarClienteSoapOut">
     <wsdl:part name="parameters" element="tns:insertarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="reservarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:reservarCliente" />
+  </wsdl:message>
+  <wsdl:message name="reservarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:reservarClienteResponse" />
   </wsdl:message>
   <wsdl:message name="insertarSucursalSoapIn">
     <wsdl:part name="parameters" element="tns:insertarSucursal" />
@@ -313,11 +432,41 @@
   <wsdl:message name="insertarCategoriaSoapOut">
     <wsdl:part name="parameters" element="tns:insertarCategoriaResponse" />
   </wsdl:message>
-  <wsdl:message name="VerificarUsuarioSoapIn">
-    <wsdl:part name="parameters" element="tns:VerificarUsuario" />
+  <wsdl:message name="VerificarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarCliente" />
   </wsdl:message>
-  <wsdl:message name="VerificarUsuarioSoapOut">
-    <wsdl:part name="parameters" element="tns:VerificarUsuarioResponse" />
+  <wsdl:message name="VerificarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificarEmpleadpSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarEmpleadp" />
+  </wsdl:message>
+  <wsdl:message name="VerificarEmpleadpSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarEmpleadpResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDeptoAsigSucursalSoapIn">
+    <wsdl:part name="parameters" element="tns:getDeptoAsigSucursal" />
+  </wsdl:message>
+  <wsdl:message name="getDeptoAsigSucursalSoapOut">
+    <wsdl:part name="parameters" element="tns:getDeptoAsigSucursalResponse" />
+  </wsdl:message>
+  <wsdl:message name="getcodDeptoNombreSoapIn">
+    <wsdl:part name="parameters" element="tns:getcodDeptoNombre" />
+  </wsdl:message>
+  <wsdl:message name="getcodDeptoNombreSoapOut">
+    <wsdl:part name="parameters" element="tns:getcodDeptoNombreResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTipocodEmpleadoSoapIn">
+    <wsdl:part name="parameters" element="tns:getTipocodEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="getTipocodEmpleadoSoapOut">
+    <wsdl:part name="parameters" element="tns:getTipocodEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAsigSucursalCodEmpleadoSoapIn">
+    <wsdl:part name="parameters" element="tns:getAsigSucursalCodEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="getAsigSucursalCodEmpleadoSoapOut">
+    <wsdl:part name="parameters" element="tns:getAsigSucursalCodEmpleadoResponse" />
   </wsdl:message>
   <wsdl:message name="getCategoriaSoapIn">
     <wsdl:part name="parameters" element="tns:getCategoria" />
@@ -408,6 +557,10 @@
       <wsdl:input message="tns:HelloWorldSoapIn" />
       <wsdl:output message="tns:HelloWorldSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="insertarEmpleado">
+      <wsdl:input message="tns:insertarEmpleadoSoapIn" />
+      <wsdl:output message="tns:insertarEmpleadoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="insertarUsuario">
       <wsdl:input message="tns:insertarUsuarioSoapIn" />
       <wsdl:output message="tns:insertarUsuarioSoapOut" />
@@ -415,6 +568,10 @@
     <wsdl:operation name="insertarCliente">
       <wsdl:input message="tns:insertarClienteSoapIn" />
       <wsdl:output message="tns:insertarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="reservarCliente">
+      <wsdl:input message="tns:reservarClienteSoapIn" />
+      <wsdl:output message="tns:reservarClienteSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insertarSucursal">
       <wsdl:input message="tns:insertarSucursalSoapIn" />
@@ -424,9 +581,29 @@
       <wsdl:input message="tns:insertarCategoriaSoapIn" />
       <wsdl:output message="tns:insertarCategoriaSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="VerificarUsuario">
-      <wsdl:input message="tns:VerificarUsuarioSoapIn" />
-      <wsdl:output message="tns:VerificarUsuarioSoapOut" />
+    <wsdl:operation name="VerificarCliente">
+      <wsdl:input message="tns:VerificarClienteSoapIn" />
+      <wsdl:output message="tns:VerificarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarEmpleadp">
+      <wsdl:input message="tns:VerificarEmpleadpSoapIn" />
+      <wsdl:output message="tns:VerificarEmpleadpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDeptoAsigSucursal">
+      <wsdl:input message="tns:getDeptoAsigSucursalSoapIn" />
+      <wsdl:output message="tns:getDeptoAsigSucursalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getcodDeptoNombre">
+      <wsdl:input message="tns:getcodDeptoNombreSoapIn" />
+      <wsdl:output message="tns:getcodDeptoNombreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTipocodEmpleado">
+      <wsdl:input message="tns:getTipocodEmpleadoSoapIn" />
+      <wsdl:output message="tns:getTipocodEmpleadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAsigSucursalCodEmpleado">
+      <wsdl:input message="tns:getAsigSucursalCodEmpleadoSoapIn" />
+      <wsdl:output message="tns:getAsigSucursalCodEmpleadoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getCategoria">
       <wsdl:input message="tns:getCategoriaSoapIn" />
@@ -496,6 +673,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarEmpleado">
+      <soap:operation soapAction="http://tempuri.org/insertarEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertarUsuario">
       <soap:operation soapAction="http://tempuri.org/insertarUsuario" style="document" />
       <wsdl:input>
@@ -507,6 +693,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertarCliente">
       <soap:operation soapAction="http://tempuri.org/insertarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reservarCliente">
+      <soap:operation soapAction="http://tempuri.org/reservarCliente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -532,8 +727,53 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerificarUsuario">
-      <soap:operation soapAction="http://tempuri.org/VerificarUsuario" style="document" />
+    <wsdl:operation name="VerificarCliente">
+      <soap:operation soapAction="http://tempuri.org/VerificarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarEmpleadp">
+      <soap:operation soapAction="http://tempuri.org/VerificarEmpleadp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeptoAsigSucursal">
+      <soap:operation soapAction="http://tempuri.org/getDeptoAsigSucursal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodDeptoNombre">
+      <soap:operation soapAction="http://tempuri.org/getcodDeptoNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTipocodEmpleado">
+      <soap:operation soapAction="http://tempuri.org/getTipocodEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAsigSucursalCodEmpleado">
+      <soap:operation soapAction="http://tempuri.org/getAsigSucursalCodEmpleado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -679,6 +919,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="insertarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/insertarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertarUsuario">
       <soap12:operation soapAction="http://tempuri.org/insertarUsuario" style="document" />
       <wsdl:input>
@@ -690,6 +939,15 @@
     </wsdl:operation>
     <wsdl:operation name="insertarCliente">
       <soap12:operation soapAction="http://tempuri.org/insertarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reservarCliente">
+      <soap12:operation soapAction="http://tempuri.org/reservarCliente" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -715,8 +973,53 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerificarUsuario">
-      <soap12:operation soapAction="http://tempuri.org/VerificarUsuario" style="document" />
+    <wsdl:operation name="VerificarCliente">
+      <soap12:operation soapAction="http://tempuri.org/VerificarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarEmpleadp">
+      <soap12:operation soapAction="http://tempuri.org/VerificarEmpleadp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeptoAsigSucursal">
+      <soap12:operation soapAction="http://tempuri.org/getDeptoAsigSucursal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcodDeptoNombre">
+      <soap12:operation soapAction="http://tempuri.org/getcodDeptoNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTipocodEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/getTipocodEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAsigSucursalCodEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/getAsigSucursalCodEmpleado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

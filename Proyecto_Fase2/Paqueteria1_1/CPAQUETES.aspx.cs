@@ -12,7 +12,7 @@ public partial class CPAQUETES : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     
     {
-        //selecciona los paquetes de un cliente
+       /* //selecciona los paquetes de un cliente
         string casilla = (string)(Session["ID"]);
         TextBox1.Text = casilla;
         string[] paquetes;
@@ -80,5 +80,9 @@ public partial class CPAQUETES : System.Web.UI.Page
        
         GridView1.DataSource = table;
         GridView1.DataBind();
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {*/
+
     }
 }

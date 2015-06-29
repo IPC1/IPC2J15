@@ -19,12 +19,11 @@ public partial class LOGIN : System.Web.UI.Page
         string apellido = TAPELLIDO.Text;
         string direccion = TDIRECCION.Text;
         string usuario = TUSUARIO.Text;
-        string contraseña = TCONTRASEÑA.Text;
+        int contraseña = Convert.ToInt32(TCONTRASEÑA.Text);
         int nit = Convert.ToInt32(TNIT.Text);
         int tarjeta = Convert.ToInt32(TTARJETA.Text);
         int telefono = Convert.ToInt32(TTELEFONO.Text);
-        int cod = servicio.insertarUsuario(nombre, contraseña);
-        servicio.insertarCliente(nombre, apellido, nit, telefono, direccion, tarjeta, cod);
+        servicio.reservarCliente(nombre, apellido, nit, telefono, direccion, tarjeta, usuario, contraseña);
 
     }
 }

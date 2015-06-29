@@ -16,7 +16,8 @@ codSucursal int FOREIGN KEY REFERENCES sucursal (codSucursal),
 codDepto int FOREIGN KEY REFERENCES departamento(codDepto));
 
 CREATE TABLE empleado (codEmpleado int IDENTITY PRIMARY KEY, nombre varchar (25), apellido varchar (25), dpi int, telefono int, direccion varchar (25), tipo varchar (25), sueldo int,
-codAsigSucursal int FOREIGN KEY REFERENCES asigSucursal (codAsigSucursal));
+codAsigSucursal int FOREIGN KEY REFERENCES asigSucursal (codAsigSucursal),
+codUsuario int FOREIGN KEY REFERENCES usuario(codUsuario);
 
 CREATE TABLE contratato (codContrato int IDENTITY PRIMARY KEY, puesto varchar (25),
 codEmpleado int FOREIGN KEY REFERENCES empleado (codEmpleado),

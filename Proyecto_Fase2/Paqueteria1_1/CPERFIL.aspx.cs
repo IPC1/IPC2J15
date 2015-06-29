@@ -17,7 +17,6 @@ public partial class CPERFIL : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        this.Session["UserID"] = 1;
         int casilla = Convert.ToInt32(Session["UserID"]);
         List<string> datos = servicio.getCliente(casilla);
         TextBox1.Text = Session["UserID"].ToString();
