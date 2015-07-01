@@ -14,7 +14,7 @@ public partial class DEMPLEADO : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-          String savePath = @"C:\Users\Pau\Downloads\";
+        String savePath = @"C:\Users\Pau\Documents\GitHub\IPC2J15\Proyecto_Fase2\CSV\";
         if (FileUpload1.HasFile)
         {
             String fileName = FileUpload1.FileName;
@@ -39,7 +39,7 @@ public partial class DEMPLEADO : System.Web.UI.Page
                 row = line.Split(',');
                 parsedData.Add(row);
                 localhost.ServiceSoapClient servicio = new localhost.ServiceSoapClient();
-                servicio.insertarEmpleado(row[0],row[1],Convert.ToInt32(row[2]),row[3],row[4]);
+                servicio.insertarEmpleado(row[1].ToString(),row[2].ToString(),Convert.ToInt32(row[3]),row[4].ToString(),row[5].ToString());
              }
             
         }

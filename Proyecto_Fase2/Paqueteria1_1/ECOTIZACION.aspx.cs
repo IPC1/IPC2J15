@@ -5,16 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class COTIZACION : System.Web.UI.Page
+public partial class ECOTIZACION : System.Web.UI.Page
 {
-    private static localhost.ServiceSoapClient servicio = new localhost.ServiceSoapClient();
+    localhost.ServiceSoapClient servicio = new localhost.ServiceSoapClient();
     protected void Page_Load(object sender, EventArgs e)
     {
         ListBox1.Items.Clear();
-        string categoria =servicio.getCategoria();
+        string categoria = servicio.getCategoria();
         string[] stringSeparators = new string[] { "," };
         string[] resultado = categoria.Split(stringSeparators, StringSplitOptions.None);
-       
+
         foreach (string s in resultado)
         {
             ListBox1.Items.Add(s);
@@ -29,18 +29,16 @@ public partial class COTIZACION : System.Web.UI.Page
     }
     protected void CALCULAR_Click(object sender, EventArgs e)
     {
-        localhost.ServiceSoapClient hola = new localhost.ServiceSoapClient();
         int peso = Convert.ToInt32(TextBox1.Text);
         string categoria = ListBox1.SelectedValue.ToString();
         string sucursal = ListBox2.SelectedValue.ToString();
-        int impuesto= hola.getImpuesto(categoria);
+        int impuesto = servicio.getImpuesto(categoria);
         int valor = Convert.ToInt32(TextBox3.Text);
-        int costo = (peso * 5) + (impuesto * valor / 100);
-        float comision = hola.getComision(sucursal); 
-        //TextBox4.Text = comision.ToString();
-        comision = (comision*valor / 100);
-        float costoT = costo + comision;
+        double costo = (peso * 5) + (impuesto * valor / 100);
+        double comision = servicio.getComision(sucursal);
+        TextBox4.Text = comision.ToString();
+        comision = (comision * valor / 100);
+        double costoT = costo + comision;
         TextBox5.Text = costoT.ToString();
     }
-    
 }

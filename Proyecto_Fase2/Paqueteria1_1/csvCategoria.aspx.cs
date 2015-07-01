@@ -14,15 +14,13 @@ public partial class CSV : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        String savePath = @"C:\Users\Pau\Downloads\";
+        String savePath = @"C:\Users\Pau\Documents\GitHub\IPC2J15\Proyecto_Fase2\CSV\";
         if (FileUpload1.HasFile)
         {
             String fileName = FileUpload1.FileName;
             savePath += fileName;
             FileUpload1.SaveAs(savePath);
             parseCSV2(savePath);
-            GridView1.DataBind();
-            Response.Redirect("csvCategoria.aspx");
         }
     }
     public List<string[]> parseCSV2(string path)
@@ -31,7 +29,7 @@ public partial class CSV : System.Web.UI.Page
 
         using (StreamReader readFile = new StreamReader(path))
         {
-            string line;
+            string line = "'";
             string[] row;
 
             while ((line = readFile.ReadLine()) != null)
@@ -40,8 +38,9 @@ public partial class CSV : System.Web.UI.Page
                 parsedData.Add(row);
                 localhost.ServiceSoapClient servicio = new localhost.ServiceSoapClient();
                 servicio.insertarCategoria(row[0],Convert.ToInt32(row[1]));
-             }
-            
+            }
+            GridView1.DataBind();
+            Response.Redirect("csvCategoria.aspx");
         }
         return parsedData;
     }

@@ -263,25 +263,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getCliente">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="getClienteResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getClienteResult" type="tns:ArrayOfString" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfString">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="insertarImpuesto">
         <s:complexType>
           <s:sequence>
@@ -387,6 +368,102 @@
             <s:element minOccurs="0" maxOccurs="1" name="getSucursalEstadoResult" type="s:string" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="cargarPaquetecasillaInter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarPaquetecasillaInterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cargarPaquetecasillaInterResult">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarEstadoPaquete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="paquete" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarEstadoPaqueteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="cargarCLIENTEcasilla">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarCLIENTEcasillaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cargarCLIENTEcasillaResult">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cargarCLIENTEAUTOcasilla">
+        <s:complexType />
+      </s:element>
+      <s:element name="cargarCLIENTEAUTOcasillaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cargarCLIENTEAUTOcasillaResult">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="autorizarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoCliente" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="casilla" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="autorizarClienteResponse">
+        <s:complexType />
       </s:element>
     </s:schema>
   </wsdl:types>
@@ -498,12 +575,6 @@
   <wsdl:message name="getComisionSoapOut">
     <wsdl:part name="parameters" element="tns:getComisionResponse" />
   </wsdl:message>
-  <wsdl:message name="getClienteSoapIn">
-    <wsdl:part name="parameters" element="tns:getCliente" />
-  </wsdl:message>
-  <wsdl:message name="getClienteSoapOut">
-    <wsdl:part name="parameters" element="tns:getClienteResponse" />
-  </wsdl:message>
   <wsdl:message name="insertarImpuestoSoapIn">
     <wsdl:part name="parameters" element="tns:insertarImpuesto" />
   </wsdl:message>
@@ -551,6 +622,36 @@
   </wsdl:message>
   <wsdl:message name="getSucursalEstadoSoapOut">
     <wsdl:part name="parameters" element="tns:getSucursalEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarPaquetecasillaInterSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarPaquetecasillaInter" />
+  </wsdl:message>
+  <wsdl:message name="cargarPaquetecasillaInterSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarPaquetecasillaInterResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarEstadoPaqueteSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarEstadoPaquete" />
+  </wsdl:message>
+  <wsdl:message name="cargarEstadoPaqueteSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarEstadoPaqueteResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarCLIENTEcasillaSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarCLIENTEcasilla" />
+  </wsdl:message>
+  <wsdl:message name="cargarCLIENTEcasillaSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarCLIENTEcasillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="cargarCLIENTEAUTOcasillaSoapIn">
+    <wsdl:part name="parameters" element="tns:cargarCLIENTEAUTOcasilla" />
+  </wsdl:message>
+  <wsdl:message name="cargarCLIENTEAUTOcasillaSoapOut">
+    <wsdl:part name="parameters" element="tns:cargarCLIENTEAUTOcasillaResponse" />
+  </wsdl:message>
+  <wsdl:message name="autorizarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:autorizarCliente" />
+  </wsdl:message>
+  <wsdl:message name="autorizarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:autorizarClienteResponse" />
   </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="HelloWorld">
@@ -625,10 +726,6 @@
       <wsdl:input message="tns:getComisionSoapIn" />
       <wsdl:output message="tns:getComisionSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getCliente">
-      <wsdl:input message="tns:getClienteSoapIn" />
-      <wsdl:output message="tns:getClienteSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="insertarImpuesto">
       <wsdl:input message="tns:insertarImpuestoSoapIn" />
       <wsdl:output message="tns:insertarImpuestoSoapOut" />
@@ -660,6 +757,26 @@
     <wsdl:operation name="getSucursalEstado">
       <wsdl:input message="tns:getSucursalEstadoSoapIn" />
       <wsdl:output message="tns:getSucursalEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarPaquetecasillaInter">
+      <wsdl:input message="tns:cargarPaquetecasillaInterSoapIn" />
+      <wsdl:output message="tns:cargarPaquetecasillaInterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarEstadoPaquete">
+      <wsdl:input message="tns:cargarEstadoPaqueteSoapIn" />
+      <wsdl:output message="tns:cargarEstadoPaqueteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarCLIENTEcasilla">
+      <wsdl:input message="tns:cargarCLIENTEcasillaSoapIn" />
+      <wsdl:output message="tns:cargarCLIENTEcasillaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cargarCLIENTEAUTOcasilla">
+      <wsdl:input message="tns:cargarCLIENTEAUTOcasillaSoapIn" />
+      <wsdl:output message="tns:cargarCLIENTEAUTOcasillaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="autorizarCliente">
+      <wsdl:input message="tns:autorizarClienteSoapIn" />
+      <wsdl:output message="tns:autorizarClienteSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
@@ -826,15 +943,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getCliente">
-      <soap:operation soapAction="http://tempuri.org/getCliente" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="insertarImpuesto">
       <soap:operation soapAction="http://tempuri.org/insertarImpuesto" style="document" />
       <wsdl:input>
@@ -900,6 +1008,51 @@
     </wsdl:operation>
     <wsdl:operation name="getSucursalEstado">
       <soap:operation soapAction="http://tempuri.org/getSucursalEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarPaquetecasillaInter">
+      <soap:operation soapAction="http://tempuri.org/cargarPaquetecasillaInter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarEstadoPaquete">
+      <soap:operation soapAction="http://tempuri.org/cargarEstadoPaquete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarCLIENTEcasilla">
+      <soap:operation soapAction="http://tempuri.org/cargarCLIENTEcasilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarCLIENTEAUTOcasilla">
+      <soap:operation soapAction="http://tempuri.org/cargarCLIENTEAUTOcasilla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autorizarCliente">
+      <soap:operation soapAction="http://tempuri.org/autorizarCliente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1072,15 +1225,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getCliente">
-      <soap12:operation soapAction="http://tempuri.org/getCliente" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="insertarImpuesto">
       <soap12:operation soapAction="http://tempuri.org/insertarImpuesto" style="document" />
       <wsdl:input>
@@ -1146,6 +1290,51 @@
     </wsdl:operation>
     <wsdl:operation name="getSucursalEstado">
       <soap12:operation soapAction="http://tempuri.org/getSucursalEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarPaquetecasillaInter">
+      <soap12:operation soapAction="http://tempuri.org/cargarPaquetecasillaInter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarEstadoPaquete">
+      <soap12:operation soapAction="http://tempuri.org/cargarEstadoPaquete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarCLIENTEcasilla">
+      <soap12:operation soapAction="http://tempuri.org/cargarCLIENTEcasilla" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cargarCLIENTEAUTOcasilla">
+      <soap12:operation soapAction="http://tempuri.org/cargarCLIENTEAUTOcasilla" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autorizarCliente">
+      <soap12:operation soapAction="http://tempuri.org/autorizarCliente" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

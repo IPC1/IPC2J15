@@ -24,9 +24,10 @@ public partial class LOGIN : System.Web.UI.Page
                 ID = servicio.VerificarCliente(usuario, contraseña, tipo);
                 if (ID != 0)
                 {
-                    Server.Transfer("CPAQUETES.aspx");
+                    
                     this.Session["ID"] = ID;
                     this.Session["Name"] = usuario;
+                    Server.Transfer("CPERFIL.aspx");
                 }
 
             }
@@ -34,7 +35,9 @@ public partial class LOGIN : System.Web.UI.Page
          {
             ID = servicio.VerificarEmpleadp(usuario, contraseña, tipo);
             if (ID != 0)
-            {        
+            {
+                this.Session["ID"] = ID;
+                this.Session["Name"] = usuario;
                 if (tipo == "empleado")
                     {
                         int asigSucursal = servicio.getAsigSucursalCodEmpleado(ID);
@@ -54,12 +57,13 @@ public partial class LOGIN : System.Web.UI.Page
                         string admin = servicio.getTipocodEmpleado(ID);
                         if (tipo == admin)
                         {
+                            
+                            TextBox3.Text = (this.Session["ID"]).ToString();
                             Server.Transfer("APERFIL.aspx");
-                            ID = Convert.ToInt32(servicio.VerificarEmpleadp(usuario, contraseña, tipo));
                         }
                         else
                         {
-                            TextBox3.Text = "Usuario no encontrado como administrador"+admin+ID;
+                            TextBox3.Text = "Usuario no encontrado como administrador";
                         }
                        
                     }
@@ -68,19 +72,19 @@ public partial class LOGIN : System.Web.UI.Page
                         string director =  servicio.getTipocodEmpleado(ID);
                         if (tipo == director)
                         {
-                        Server.Transfer("DIRECTOR.aspx");
+                        
                         int asigSucursal= servicio.getAsigSucursalCodEmpleado(ID);
                         this.Session["Departamento"] = servicio.getDeptoAsigSucursal(asigSucursal);
+                        Server.Transfer("DPERFIL.aspx");
                         }
                         else
                         {
-                            TextBox3.Text = "Usuario no encontrado como director" + director + ID;
+                            TextBox3.Text = "Usuario no encontrado como director";
                         }
                         
 
                     }
-                this.Session["ID"] = ID;
-                this.Session["Name"] = usuario;
+                
             }
             else
             {

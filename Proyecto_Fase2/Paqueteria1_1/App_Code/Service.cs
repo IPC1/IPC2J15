@@ -53,7 +53,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         string palabra = (comando.ExecuteScalar()).ToString();
-
+        conexion.Close();
         return Convert.ToInt32(palabra);
     }
 
@@ -78,7 +78,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
-
+        conexion.Close();
         return palabra;
     }
 
@@ -104,7 +104,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         string palabra = (comando.ExecuteScalar()).ToString();
-
+        conexion.Close();
         return palabra;
     }
 
@@ -112,23 +112,26 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public void reservarCliente(string nombre, string apellido, int nit, int telefono, string direccion, int tarjeta, string usuario, int contraseña)
     {
-        SqlConnection conexion = new SqlConnection(sqlConnectionString);
-        string sql = "USE paqueteria;"
-        + ""
-        + "INSERT INTO clientesAuto (nombre, apellido, nit, telefono, direccion, tarjeta, usuario, coontraseña)"
+       
+        try
+        {
+            SqlConnection con = new SqlConnection(sqlConnectionString);
+            con.Open();
+            string consulta = "USE paqueteria;"
+            + "SET identity_insert clienteAuto off;"
+        + "INSERT INTO clienteAuto (nombre, apellido, nit, telefono, direccion, tarjeta, usuario, contraseña)"
         + "values ('" + nombre + "', '" + apellido + "'," + nit + ", " + telefono + ", '" + direccion + "', " + tarjeta + ", '" + usuario + "', "+contraseña+");";
-        //nuestro comando
-        SqlCommand comando = new SqlCommand();
-        //asignamos al objeto de conexión la cadena
-        conexion.ConnectionString = sqlConnectionString;
-        //indicamos al comando la conexión
-        comando.Connection = conexion;
-        //se abre la conexión
-        conexion.Open();
-        //asignamos al comando la consulta de COUNT
-        comando.CommandText = sql;
-        //guardamos el resultado en el TextBox txt_num_ventas
-        string palabra = (comando.ExecuteScalar()).ToString();
+            SqlDataAdapter adap = new SqlDataAdapter(consulta, con);
+            SqlCommand cmd;
+            cmd = new SqlCommand(consulta, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception ex)
+        {
+        }
+        
+       
     }
     [WebMethod]
     public string insertarSucursal(string nombre, string pais, string direccion, int noEmpleados, int telefono, int comision,  string sede)
@@ -147,6 +150,7 @@ public class Service : System.Web.Services.WebService
             SqlCommand cmd;
             cmd = new SqlCommand(consulta, con);
             cmd.ExecuteNonQuery();
+            con.Close();
         }
         catch (Exception ex)
         {
@@ -168,11 +172,13 @@ public class Service : System.Web.Services.WebService
             SqlCommand cmd;
             cmd = new SqlCommand(consulta, con);
             cmd.ExecuteNonQuery();
+            con.Close();
         }
         catch (Exception ex)
         {
             vel = "no se pudo" + ex;
         }
+        
         return vel;
     }
 
@@ -197,7 +203,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
-
+        conexion.Close();
         return palabra;
     }
 
@@ -220,7 +226,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
-
+        conexion.Close();
         return palabra;
     }
 
@@ -241,6 +247,7 @@ public class Service : System.Web.Services.WebService
             palabra = dr["nombre"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
 
@@ -260,6 +267,7 @@ public class Service : System.Web.Services.WebService
             palabra = dr["codDepto"].ToString();
 
         }
+        sqlConn.Close();
         return Convert.ToInt32(palabra);
     }
 
@@ -279,6 +287,7 @@ public class Service : System.Web.Services.WebService
             palabra = dr["tipo"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
     [WebMethod]
@@ -297,6 +306,7 @@ public class Service : System.Web.Services.WebService
             palabra = dr["codAsigSucursal"].ToString();
 
         }
+        sqlConn.Close();
         return Convert.ToInt32(palabra);
     }
 
@@ -318,6 +328,7 @@ public class Service : System.Web.Services.WebService
             palabra = palabra + "," + dr["nombre"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
 
@@ -337,6 +348,7 @@ public class Service : System.Web.Services.WebService
             palabra = palabra + "," + dr["nombre"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
 
@@ -357,6 +369,7 @@ public class Service : System.Web.Services.WebService
             palabra = palabra + "," + dr["nombre"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
 
@@ -380,7 +393,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
-
+        conexion.Close();
         return palabra;
     }
 
@@ -389,7 +402,7 @@ public class Service : System.Web.Services.WebService
     {
         SqlConnection conexion = new SqlConnection();
         string sql = "USE paqueteria;"
-      //  + "declare @codSucursal int= (select codSucursal from Sucursal where nombre= '" + nombre + "';"
+      
         + "select comision from sucursal where  nombre= '" + nombre + "';";
         //nuestro comando
         SqlCommand comando = new SqlCommand();
@@ -403,38 +416,12 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
-
+        conexion.Close();
         return palabra;
     }
 
 
-    [WebMethod]
-    public List<string> getCliente(int casilla)
-    {
-            List<string> datos = new List<string>();
-            SqlCommand comando = new SqlCommand();
-        string sql = "USE paqueteria;"
-        + "select casillaInternacional, nombre, apellido, nit, telefono, direccion, tarjeta from cliente where  casillaInternacional= '" + casilla + "';";
-            comando.CommandText = sql;
-            SqlConnection conexion = new SqlConnection(sqlConnectionString);
-            comando.Connection = conexion;
-            conexion.Open();
-            SqlDataReader lector = comando.ExecuteReader();
-            if (lector.HasRows)
-            {
-                while (lector.Read())
-                {
-                    datos.Add(Convert.ToString(lector.GetInt32(0)));
-                    datos.Add(lector.GetString(1));
-                    datos.Add(lector.GetString(2));
-                    datos.Add(Convert.ToString(lector.GetInt32(2)));
-                    datos.Add(Convert.ToString(lector.GetInt32(3)));
-                    datos.Add(lector.GetString(4));
-                    datos.Add(Convert.ToString(lector.GetInt32(5)));
-                }
-            }
-            return datos;
-        }
+
 
     [WebMethod]
     public void insertarImpuesto(string categoria,int impuesto) //retorna el nuevo impuesto
@@ -456,6 +443,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
+        conexion.Close();
     }
 
 
@@ -479,6 +467,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         int palabra = Convert.ToInt32(comando.ExecuteScalar());
+        conexion.Close();
     }
 
 
@@ -498,6 +487,7 @@ public class Service : System.Web.Services.WebService
             palabra = palabra + "," + dr["codPaquete"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
 
@@ -537,6 +527,7 @@ public class Service : System.Web.Services.WebService
             palabra = palabra + "," + dr["codEstado"].ToString();
 
         }
+        con.Close();
         return palabra;
     }
 
@@ -558,6 +549,7 @@ public class Service : System.Web.Services.WebService
             palabra = palabra + "," + dr["nombre"].ToString();
 
         }
+        sqlConn.Close();
         return palabra;
     }
 
@@ -578,6 +570,7 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         string palabra = (comando.ExecuteScalar()).ToString();
+        conexion.Close();
         return palabra;
     }
 
@@ -598,7 +591,104 @@ public class Service : System.Web.Services.WebService
         comando.CommandText = sql;
         //guardamos el resultado en el TextBox txt_num_ventas
         string palabra = (comando.ExecuteScalar()).ToString();
+        conexion.Close();
         return palabra;
+    }
+
+
+    [WebMethod]
+    public DataSet cargarPaquetecasillaInter(int casilla)
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        SqlCommand comando = new SqlCommand();
+        conexion.ConnectionString = sqlConnectionString;
+        comando.Connection = conexion;
+        conexion.Open();
+        string consulta = "Select *from Paquete  WHERE casillaInternacional='" + casilla + "'";
+        SqlDataAdapter daClientes = new SqlDataAdapter(consulta, conexion);
+        DataSet dsClientes = new DataSet();
+        daClientes.Fill(dsClientes, "DetallePaquete");
+        conexion.Close();
+        return dsClientes;
+    }
+
+    [WebMethod]
+    public void cargarEstadoPaquete(string estado, int paquete)
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        SqlCommand comando = new SqlCommand();
+        conexion.ConnectionString = sqlConnectionString;
+        comando.Connection = conexion;
+        conexion.Open();
+        string consulta = "UPDATE paquete SET estado= '"+estado+"' where codPaquete="+paquete+";";
+        SqlDataAdapter daClientes = new SqlDataAdapter(consulta, conexion);
+        DataSet dsClientes = new DataSet();
+        conexion.Close();
+        daClientes.Fill(dsClientes, "DetallePaquete");
+       
+    }
+
+    [WebMethod]
+    public DataSet cargarCLIENTEcasilla(int casilla)
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        SqlCommand comando = new SqlCommand();
+        conexion.ConnectionString = sqlConnectionString;
+        comando.Connection = conexion;
+        conexion.Open();
+        string consulta = "SELECT * FROM cliente where casillaInternacional="+casilla;
+        SqlDataAdapter daClientes = new SqlDataAdapter(consulta, conexion);
+        DataSet dsClientes = new DataSet();
+        daClientes.Fill(dsClientes, "DetallePaquete");
+        conexion.Close();
+        return dsClientes;
+    }
+
+    [WebMethod]
+    public DataSet cargarCLIENTEAUTOcasilla()
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        SqlCommand comando = new SqlCommand();
+        conexion.ConnectionString = sqlConnectionString;
+        comando.Connection = conexion;
+        conexion.Open();
+        string consulta = "SELECT * FROM clienteAuto";
+        SqlDataAdapter daClientes = new SqlDataAdapter(consulta, conexion);
+        DataSet dsClientes = new DataSet();
+        daClientes.Fill(dsClientes, "DetallePaquete");
+        conexion.Close();
+        return dsClientes;
+    }
+
+    [WebMethod]
+    public void autorizarCliente(int codigoCliente, int casilla)
+    {
+        SqlConnection conexion = new SqlConnection(sqlConnectionString);
+        SqlCommand comando = new SqlCommand();
+        conexion.ConnectionString = sqlConnectionString;
+        comando.Connection = conexion;
+        conexion.Open();
+        string consulta = "Use paqueteria;"
+        +"SET identity_insert cliente on;"
+        +"declare @casilla int ="+casilla+";"
+        +"declare @nombre varchar (25)= (select nombre from clienteAuto where codCliente= "+codigoCliente+");"
+        + "declare @apellido varchar (25)= (select apellido from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "declare @nit int= (select nit from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "declare @telefono int= (select telefono from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "declare @direccion varchar (25)= (select direccion from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "declare @tarjeta int= (select tarjeta from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "declare @usuario varchar (25)= (select usuario from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "declare @contraseña int= (select contraseña from clienteAuto where codCliente= " + codigoCliente + ");"
+        + "INSERT INTO usuario (nombre, contraseña, tipo)"
+        +"values (@usuario, @contraseña, 'cliente');"
+        +"declare @codUsuario int= (select codUsuario from usuario where nombre= @usuario and contraseña=@contraseña);"
+        + "INSERT INTO cliente (casillaInternacional, nombre, apellido, nit, telefono, direccion, tarjeta,  codUsuario)"
+        +"values (@casilla, @nombre, @apellido, @nit, @telefono, @direccion, @tarjeta, @codUsuario);"
+        + "delete  from clienteAuto where codCliente="+codigoCliente+";";
+        SqlDataAdapter daClientes = new SqlDataAdapter(consulta, conexion);
+        DataSet dsClientes = new DataSet();
+        daClientes.Fill(dsClientes, "DetallePaquete");
+        conexion.Close();
     }
 
     }

@@ -14,8 +14,8 @@
     <table style="width:100%;">
         <tr>
             <td class="auto-style4"><a href="DCONTRATAR.aspx">EMPLEADOS</a> </td>
-            <td class="auto-style5"><a href="DEMPLEADOS.aspx">CONTRATAR</a></td>
-            <td><a href="csvCategoria.aspx">BUSCAR</a></td>
+            <td class="auto-style5"><a href="DEMPLEADO.aspx">CONTRATAR</a></td>
+            <td><a href="DBUSCAR.aspx">BUSCAR</a></td>
         </tr>
     </table>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">

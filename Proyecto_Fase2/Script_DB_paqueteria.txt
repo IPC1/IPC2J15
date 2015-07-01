@@ -26,6 +26,9 @@ codDirector int FOREIGN KEY REFERENCES empleado (codEmpleado));
 CREATE TABLE cliente (casillaInternacional int IDENTITY PRIMARY KEY, nombre varchar (25), apellido varchar (25), nit int, telefono int, direccion varchar (25), tarjeta int,
 codUsuario int FOREIGN KEY REFERENCES usuario(codUsuario));
 
+CREATE TABLE clienteAuto (codCliente int IDENTITY PRIMARY KEY, nombre varchar (25), apellido varchar (25), nit int, telefono int, direccion varchar (25), tarjeta int,
+codUsuario int FOREIGN KEY REFERENCES usuario(codUsuario));
+
 CREATE TABLE paquete (codPaquete int IDENTITY PRIMARY KEY, peso int, valor int,
 codCategoria int FOREIGN KEY REFERENCES categoria(codCategoria),
 casillaInternacional int FOREIGN KEY REFERENCES cliente (casillaInternacional));

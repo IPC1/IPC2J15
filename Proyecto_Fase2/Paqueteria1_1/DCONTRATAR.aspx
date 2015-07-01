@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DIRECTOR.master" AutoEventWireup="true" CodeFile="DCONTRATAR.aspx.cs" Inherits="DCONTRATAR" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-&nbsp;<asp:Label ID="Label1" runat="server" Text="Cod"></asp:Label>
+    &nbsp;<asp:Label ID="Label1" runat="server" Text="Cod"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" Enabled="False" ReadOnly="True"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Label ID="Label2" runat="server" Text="DEPARTAMENTO"></asp:Label>
